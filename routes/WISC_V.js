@@ -17,5 +17,70 @@ router.get('/',
       res.render('wiscvHome');
 });
 
+router.get('/form',
+  isLoggedIn,
+  async (req, res, next) => {
+    res.render('wiscvForm');
+});
+
+router.get('/resultsform',
+  isLoggedIn,
+  async (req, res, next) => {
+    res.locals.eval = await WISCV.find({userId:req.user._id})
+    res.render('wiscvResults');
+});
+
+router.post('/results',
+  isLoggedIn,
+  async (req, res, next) => {
+      console.log("2")
+      const wiscv = new WISCV({
+        userId: req.user._id,
+        wisc_vDate: req.body.wisc_vDate,
+        wisc_vSI: req.body.wisc_vSI,
+        wisc_vVC: req.body.wisc_vVC,
+        wisc_vIN: req.body.wisc_vIN,
+        wisc_vCO: req.body.wisc_vCO,
+        wisc_vBD: req.body.wisc_vBD,
+        wisc_vVP: req.body.wisc_vVP,
+        wisc_vMR: req.body.wisc_vMR,
+        wisc_vFW: req.body.wisc_vFW,
+        wisc_vPC: req.body.wisc_vPC,
+        wisc_vAR: req.body.wisc_vAR,
+        wisc_vDS: req.body.wisc_vDS,
+        wisc_vPS: req.body.wisc_vPS,
+        wisc_vLN: req.body.wisc_vLN,
+        wisc_vCD: req.body.wisc_vCD,
+        wisc_vSS: req.body.wisc_vSS,
+        wisc_vCA: req.body.wisc_vCA,
+        wisc_vVCI: req.body.wisc_vVCI,
+        wisc_vVSI: req.body.wisc_vVSI,
+        wisc_vFRI: req.body.wisc_vFRI,
+        wisc_vWMI: req.body.wisc_vWMI,
+        wisc_vPSI: req.body.wisc_vPSI,
+        wisc_vQRI: req.body.wisc_vQRI,
+        wisc_vAWMI: req.body.wisc_vAWMI,
+        wisc_vNVI: req.body.wisc_vNVI,
+        wisc_vGAI: req.body.wisc_vGAI,
+        wisc_vCPI: req.body.wisc_vCPI,
+        wisc_vNSI: req.body.wisc_vNSI,
+        wisc_vSTI: req.body.wisc_vSTI,
+        wisc_vSRI: req.body.wisc_vSRI,
+        wisc_vFSIQ: req.bodywisc_vFSIQ
+        })
+      await wiscv.save();
+      res.locals.eval = wiscv
+      //res.render("todoVerification")
+      res.render('wiscvResults')
+});
+
+router.get('/remove/:itemId',
+  isLoggedIn,
+  async (req, res, next) => {
+      console.log("inside /todo/remove/:itemId")
+      await ToDoItem.remove({_id:req.params.itemId});
+      res.redirect('/todo')
+});
+
 
 module.exports = router;
