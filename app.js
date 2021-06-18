@@ -27,7 +27,8 @@ const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
 const toDoRouter = require('./routes/todo');
 const toDoAjaxRouter = require('./routes/todoAjax');
-
+const wiscvRouter = require('./routes/WISC_V');
+const tempRouter = require('./routes/temp');
 
 
 const app = express();
@@ -52,6 +53,9 @@ app.use('/users', usersRouter);
 
 app.use('/todo',toDoRouter);
 app.use('/todoAjax',toDoAjaxRouter);
+
+app.use('/WISC_V',wiscvRouter);
+app.use('/temp',tempRouter);
 
 const myLogger = (req,res,next) => {
   console.log('inside a route!')
@@ -94,6 +98,16 @@ app.use('/publicprofile/:userId',
       }
     }
 )
+
+app.get('/preg_birth_historyForm',
+  isLoggedIn,
+  (req,res) => {  res.render('preg_birth_historyForm')
+})
+
+app.get('/WJ_IV_ACHform',
+  isLoggedIn,
+  (req,res) => {  res.render('WJ_IV_ACHform')
+})
 
 
 app.get('/profile',
@@ -139,6 +153,11 @@ app.get("/test",async (req,res,next) => {
   }
 
 })
+
+/*
+app.get("/WISC_V/form", (request,response) => {
+  response.render("wiscvForm")
+}) */
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
