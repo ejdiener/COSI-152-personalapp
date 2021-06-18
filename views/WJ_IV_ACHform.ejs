@@ -1,4 +1,9 @@
+<%- include('bootheader') -%>
+<%- include('menubar') -%>
+
+<div class=jumbotron>
 <h2>Woodcock-Johnson Tests of Achievement, 4th Edition (WJ-ACH)</h2>
+</div>
 
 <form method="post" action="/WJ_IV_ACH_helper">
   <hr>
@@ -7,7 +12,7 @@
   <hr>
 
 Enter the standard score for each test. <i>(note that not all tests may be used)</i><br><br>
-  <h6>Standard Battery</h6>
+  <h3>Standard Battery</h3>
   <div class="row">
     <div class="col">
       Letter-World Identification
@@ -98,7 +103,7 @@ Enter the standard score for each test. <i>(note that not all tests may be used)
     </div>
   <br>
 
-  <h6>Extended Battery</h6>
+  <h3>Extended Battery</h3>
   <div class="row">
     <div class="col">
       Reading Recall
@@ -174,7 +179,7 @@ Enter the standard score for each test. <i>(note that not all tests may be used)
 <hr>
 
 Enter the standard score for each cluster.<br><br>
-  <h6>Reading Clusters</h6>
+  <h3>Reading Clusters</h3>
   <div class="row">
     <div class="col">
       Reading
@@ -224,7 +229,7 @@ Enter the standard score for each cluster.<br><br>
       </div>
     </div>
 
-  <h6>Mathematics Clusters</h6>
+  <h3>Mathematics Clusters</h3>
   <div class="row">
     <div class="col">
       Mathematics
@@ -258,7 +263,7 @@ Enter the standard score for each cluster.<br><br>
       </div>
     </div>
 
-  <h6>Writing Clusters</h6>
+  <h3>Writing Clusters</h3>
   <div class="row">
     <div class="col">
       Written Language
@@ -292,7 +297,7 @@ Enter the standard score for each cluster.<br><br>
       </div>
     </div>
 
-  <h6>Cross-Domain Clusters</h6>
+  <h3>Cross-Domain Clusters</h3>
   <div class="row">
     <div class="col">
       Academic Skills
@@ -341,4 +346,9 @@ Enter the standard score for each cluster.<br><br>
       <input type="number" name ="WJ_IV_ACH_ba">
       </div>
     </div>
+    <br>
+
+    <input type="submit" name="Submit">
   </form>
+
+  <%- include('bootfooter') -%>
