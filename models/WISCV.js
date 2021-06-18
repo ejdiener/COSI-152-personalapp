@@ -5,6 +5,7 @@ const ObjectId = mongoose.Schema.Types.ObjectId;
 
 var WISCVSchema = Schema( {
   userId: ObjectId,
+//  itemId: ObjectId,
   wisc_vDate: Date,
   wisc_vSI: Number,
   wisc_vVC: Number,
