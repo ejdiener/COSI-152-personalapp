@@ -99,14 +99,19 @@ app.use('/publicprofile/:userId',
     }
 )
 
-app.get('/preg_birth_historyForm',
+app.get('/history/pregbirth/form',
   isLoggedIn,
-  (req,res) => {  res.render('preg_birth_historyForm')
+  (req,res) => {  res.render('formPregBirthHistory')
 })
 
-app.get('/WJ_IV_ACHform',
+app.get('/history/family/form',
   isLoggedIn,
-  (req,res) => {  res.render('WJ_IV_ACHform')
+  (req,res) => {  res.render('formFamilyHistory')
+})
+
+app.get('/WJIVACH/form',
+  isLoggedIn,
+  (req,res) => {  res.render('formWJIVACH')
 })
 
 
