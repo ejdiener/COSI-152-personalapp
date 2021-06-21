@@ -3,9 +3,11 @@ const mongoose = require( 'mongoose' );
 const Schema = mongoose.Schema;
 const ObjectId = mongoose.Schema.Types.ObjectId;
 
+// Document in one collection has an ID, put that ID into another document
+
 var WISCVSchema = Schema( {
   userId: ObjectId,
-//  itemId: ObjectId,
+  evalId: ObjectId,
   wisc_vDate: Date,
   wisc_vSI: Number,
   wisc_vVC: Number,
