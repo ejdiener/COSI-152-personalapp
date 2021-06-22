@@ -4,8 +4,12 @@ const Schema = mongoose.Schema;
 const ObjectId = mongoose.Schema.Types.ObjectId;
 
 var EvaluationSchema = Schema( {
-  userId: ObjectId,
-  dateEval: Date
+  patientId: ObjectId,
+  providerId: ObjectId,
+  dateRequestEval: Date,
+  dateFinishEval: Date,
+  wiscvId: ObjectId,
+  wjivachId: ObjectId,
 } );
 
 module.exports = mongoose.model( 'Evaluation', EvaluationSchema );
