@@ -26,8 +26,6 @@ router.post('/',
       res.render('homeEvaluation');
 });
 
-
-
 router.get('/:evalID/form',
   isLoggedIn,
   async (req, res, next) => {
