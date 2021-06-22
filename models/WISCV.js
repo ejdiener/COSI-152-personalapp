@@ -6,11 +6,12 @@ const ObjectId = mongoose.Schema.Types.ObjectId;
 // Document in one collection has an ID, put that ID into another document
 
 var WISCVSchema = Schema( {
-  userId: ObjectId,
+  providerId: ObjectId,
+  patientId: ObjectId,
   evalId: ObjectId,
   wisc_vDate: Date,
   wisc_vSI: Number,
-  wisc_vVC: Number,
+/*  wisc_vVC: Number,
   wisc_vIN: Number,
   wisc_vCO: Number,
   wisc_vBD: Number,
@@ -38,7 +39,7 @@ var WISCVSchema = Schema( {
   wisc_vNSI: Number,
   wisc_vSTI: Number,
   wisc_vSRI: Number,
-  wisc_vFSIQ: Number
+  wisc_vFSIQ: Number */
 } );
 
 module.exports = mongoose.model( 'WISCV', WISCVSchema );
