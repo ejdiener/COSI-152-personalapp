@@ -14,11 +14,11 @@
   </div>
   <div class="row">
     <div class="col"> Provider's pronouns: </div>
-    <div class="col"> <select name="gender">
-                        <option value="he">He/him/his</option>
-                        <option value="she">She/her/hers</option>
-                        <option value="they">They/them/theirs</option>
-                        <option value="xe">Xe/xem/xirs</option>
+    <div class="col"> <select name="providerPronouns">
+                        <option value="he"> He/him/his </option>
+                        <option value="she"> She/her/hers </option>
+                        <option value="they"> They/them/theirs </option>
+                        <option value="xe"> Xe/xem/xirs </option>
                       </select>
     </div>
   </div>
@@ -30,7 +30,7 @@
                       <input type="Radio" name ="providerRole" value='teacher'>&nbsp;Teacher<br>
                       <input type="Radio" name ="providerRole" value='classroom_aide'>&nbsp;Classroom Aide<br>
                       <input type="Radio" name ="providerRole" value='psychologist'>&nbsp;Psychologist<br>
-                      <input type="Radio" name ="providerRole" value='speech_language_therapist'>&nbsp;Speech-Lenguage Therapist<br>
+                      <input type="Radio" name ="providerRole" value='speech_language_therapist'>&nbsp;Speech-Language Therapist<br>
                       <input type="Radio" name ="providerRole" value='occupational_therapist'>&nbsp;Occupational Therapist<br>
                       <input type="Radio" name ="providerRole" value='physical_therapist'>&nbsp;Physical Therapist<br>
                       <input type="Radio" name ="providerRole" value='developmental_specialist'>&nbsp;Developmental Specialist<br>
@@ -74,10 +74,18 @@
     </div>
   </div>
   <div class="row">
-    <div class="col"> Photo: </div>
-    <div class="col"> <input type="text" name ="providerEmail">
+    <div class="col"> Bio: </div>
+    <div class="col"> <textarea name="providerBio" rows="2" col="40"></textarea>
     </div>
   </div>
+  <!-- <div class="row">
+    <div class="col"> Photo: </div>
+    <div class="col"> <input type="file" name ="providerPhoto">
+    </div>
+  </div> -->
+  <hr>
+
+  <input type="submit" name="Submit">
 </form>
 
 <%- include('bootfooter') -%>
