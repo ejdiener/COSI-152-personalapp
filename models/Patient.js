@@ -8,7 +8,7 @@ const ObjectId = mongoose.Schema.Types.ObjectId;
 var PatientSchema = Schema( {
   patientId: ObjectId,
   patientName: String,
-  patientGuardian: String,      // ObjectId??
+  patientGuardian: ObjectId,      // ObjectId??
   currentProviders: ObjectId,
 
   PregBirthHistory: ObjectId,                 // SCHEMA: Stores results of PregBirthHistory form
@@ -17,10 +17,10 @@ var PatientSchema = Schema( {
   SocialHistory: ObjectId,                    // SCHEMA: Stores results of HeathHistory form
   FamilyMedHistory: ObjectId,                 // SCHEMA: Stores results of PregBirthHistory form
   EducationHistory: ObjectId,                 // SCHEMA: Stores results of ProvidersHistory form
-  EvaluationHistory: ObjectId,                // LIST?? of previous evaluations
   ProvidersHistory: ObjectId,                 // SCHEMA: Stores results of ProvidersHistory form
-  CurrentProviders: ObjectId,                 // SCHEMA?? of current providers
 
+  EvaluationHistory: [Schema.Types.ObjectId],                // LIST?? of previous evaluations
+  CurrentProviders: [Schema.Types.ObjectId],                 // SCHEMA?? of current providers
 } );
 
 module.exports = mongoose.model( 'Patient', PatientSchema );
