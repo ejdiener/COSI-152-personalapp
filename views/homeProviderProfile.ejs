@@ -1,6 +1,53 @@
 <%- include('bootheader') -%>
 <%- include('menubar') -%>
 
+<div class=jumbotron>
+  <h1> <%= provider.providerName %> </h1>
+  <p> <% if (provider.providerPronouns == "he") {%>
+    he/him/his
+  <% } else if (provider.providerPronouns == "she") {%>
+    she/her/hers
+  <% } else if (provider.providerPronouns == "xe") {%>
+    xe/xem/xirs
+  <% } else {%>
+    they/them/theirs
+  <% } %> </p>
+</div>
+<br>
+<p> <%= provider.providerBio %> </p>
 
+<div class="row">
+  <div class="col">  </div>
+  <div class="col">
+    <table class="table table-light table-striped table-bordered">
+      <tbody>
+        <% if (typeof(provider.providerOrganization) == "string") {%>
+          <tr>
+            <td> Organization </td>
+            <td> <%= provider.providerOrganization %> </td>
+          </tr>
+        <% } %>
+        <% if (typeof(provider.providerAddress) == "string") {%>
+          <tr>
+            <td> Address </td>
+            <td> <%= provider.providerAddress %> </td>
+          </tr>
+        <% } %>
+        <% if (typeof(provider.providerPhone) == "string") {%>
+          <tr>
+            <td> Phone </td>
+            <td> <%= provider.providerPhone %> </td>
+          </tr>
+        <% } %>
+        <% if (typeof(provider.providerEmail) == "string") {%>
+          <tr>
+            <td> Email </td>
+            <td> <%= provider.providerEmail %> </td>
+          </tr>
+        <% } %>
+      </tbody>
+    </table>
+  </div>
+</div>
 
 <%- include('bootfooter') -%>
