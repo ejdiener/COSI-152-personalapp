@@ -60,7 +60,7 @@ router.post('/show',
         wisc_vNSI: req.body.wisc_vNSI,
         wisc_vSTI: req.body.wisc_vSTI,
         wisc_vSRI: req.body.wisc_vSRI,
-        wisc_vFSIQ: req.bodywisc_vFSIQ
+        wisc_vFSIQ: req.body.wisc_vFSIQ
         })
       await wiscv.save();
       res.locals.eval = wiscv
