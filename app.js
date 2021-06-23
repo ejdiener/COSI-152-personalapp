@@ -27,6 +27,7 @@ const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
 const toDoRouter = require('./routes/todo');
 const toDoAjaxRouter = require('./routes/todoAjax');
+const profileRouter = require('./routes/profile');
 const wiscvRouter = require('./routes/WISC_V');
 const tempRouter = require('./routes/temp');
 
@@ -50,10 +51,12 @@ app.use(authRouter)
 app.use(loggingRouter);
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
+app.use('/profile', profileRouter);
 
 app.use('/todo',toDoRouter);
 app.use('/todoAjax',toDoAjaxRouter);
 
+// Can you do /evaluations/:evalID/WISC_V
 app.use('/WISC_V',wiscvRouter);
 app.use('/temp',tempRouter);
 
@@ -62,6 +65,7 @@ const myLogger = (req,res,next) => {
   next()
 }
 
+/*
 app.get('/testing',
   myLogger,
   isLoggedIn,
@@ -72,7 +76,7 @@ app.get('/testing2',(req,res) => {
   res.render('testing2')
 })
 
-app.get('/profiles',
+ app.get('/profiles',
     isLoggedIn,
     async (req,res,next) => {
       try {
@@ -97,7 +101,7 @@ app.use('/publicprofile/:userId',
         next(e)
       }
     }
-)
+) */
 
 app.get('/history/pregbirth/form',
   isLoggedIn,
