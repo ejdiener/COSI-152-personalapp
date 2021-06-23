@@ -4,18 +4,20 @@ const Schema = mongoose.Schema;
 const ObjectId = mongoose.Schema.Types.ObjectId;
 
 
-var PatientSchema = Schema( {
-  providerId: ObjectId,
+var ProviderSchema = Schema( {
+  userId: ObjectId,
   providerName: String,
+  providerPronouns: String,
   providerEducation: String,
   providerOrganization: String,
   providerAddress: String,
   providerPhone: String,
   providerEmail: String,
-  
+  providerBio: String,
+//  providerPhoto: File,
 
-  patientId: ObjectId,  //LIST
+  patientIds: [Schema.Types.ObjectId],  //LIST
 
 } );
 
-module.exports = mongoose.model( 'Patient', PatientSchema );
+module.exports = mongoose.model( 'Provider', ProviderSchema );
