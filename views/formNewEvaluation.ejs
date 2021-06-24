@@ -2,12 +2,13 @@
 <%- include('menubar') -%>
 
 <div class=jumbotron>
-<h2>Past Evaluations</h2>
+<h2>Evaluations</h2>
 </div>
 
 <form method="post" action="/evaluations">
-
-
+  What tests were given in this new evaluation?
+  <input type="checkbox" name="tests" value="WISCV"> WISC-V<br>
+  <input type="submit" name="Submit">
 </form>
 
 <%- include('bootfooter') -%>
