@@ -6,21 +6,23 @@ const ObjectId = mongoose.Schema.Types.ObjectId;
 
 //Create a page to create a patient
 var PatientSchema = Schema( {
-  patientId: ObjectId,
   patientName: String,
-  patientGuardian: ObjectId,      // ObjectId??
-  currentProviders: ObjectId,
+  patientPronouns: String,
+  patientAddress: String,
+  patientPhone: String,
+  patientBio: String,
+  patientGuardian: ObjectId,
+  CurrentProvidersIds: [Schema.Types.ObjectId],                 // SCHEMA?? of current providers
 
   PregBirthHistory: ObjectId,                 // SCHEMA: Stores results of PregBirthHistory form
-  DevelopmentHistory: ObjectId,               // SCHEMA: Stores results of DevelopmentHistory form
-  HealthHistory: ObjectId,                    // SCHEMA: Stores results of HeathHistory form
-  SocialHistory: ObjectId,                    // SCHEMA: Stores results of HeathHistory form
-  FamilyMedHistory: ObjectId,                 // SCHEMA: Stores results of PregBirthHistory form
-  EducationHistory: ObjectId,                 // SCHEMA: Stores results of ProvidersHistory form
-  ProvidersHistory: ObjectId,                 // SCHEMA: Stores results of ProvidersHistory form
+//  DevelopmentHistory: ObjectId,               // SCHEMA: Stores results of DevelopmentHistory form
+//  HealthHistory: ObjectId,                    // SCHEMA: Stores results of HeathHistory form
+//  SocialHistory: ObjectId,                    // SCHEMA: Stores results of SocialHistory form
+  FamilyMedHistory: ObjectId,                 // SCHEMA: Stores results of FamilyMedHistory form
+//  EducationHistory: ObjectId,                 // SCHEMA: Stores results of EducationHistory form
+//  ProvidersHistory: ObjectId,                 // SCHEMA: Stores results of ProvidersHistory form
 
   EvaluationHistory: [Schema.Types.ObjectId],                // LIST?? of previous evaluations
-  CurrentProviders: [Schema.Types.ObjectId],                 // SCHEMA?? of current providers
 } );
 
 module.exports = mongoose.model( 'Patient', PatientSchema );
