@@ -16,7 +16,7 @@ router.get('/',
       res.render('homeHistory');
 });
 
-router.get('/pregbirth/form',
+router.get('/pregbirth/form/:patientId',
   isLoggedIn,
   async (req, res, next) => {
       res.render('formPregBirthHistory');
