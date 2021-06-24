@@ -2,18 +2,15 @@
 
   <div class="jumbotron">
 
-    <h1> Authentication Demo : Tim Hickey Belle Scott and Jiayin Li  </h1>
+    <h1> Alpha Care Coordinator  </h1>
 
-    <p>Welcome to the Authentication Demo </p>
-  
+    <p> (very alpha) </p>
+
+
     <ul>
-      <li><a href="/testing">Go to a test page </a></li>
-      <li><a href="/testing2">Go to another test page </a></li>
       <% if (loggedIn) {%>
-      <li><a href="/profile">See your profile </a></li>
-      <li><a href="/profiles">See everyone's profile</a></li>
-      <li><a href="/todo">See your to do list </a></li>
-      <li><a href="/todoAjax">See your to do list with Ajax </a></li>
+        <li><a href="/profile/form/<%=user%>"> Create your provider profile </a></li>
+        <li><a href="/profile/<%=user%>">See your profile </a></li>
       <% } %>
     </ul>
   </div>
