@@ -103,6 +103,29 @@ app.use('/publicprofile/:userId',
     }
 ) */
 
+app.post("/formNewPatient",
+  isLoggedIn,
+  async (req, res, next) => {
+    const patient = new Patient(
+      patientName: req.body.patientName,
+    })
+    const provider = await Provider.findOne({userId:req.user._id})
+    Provider.findOneAndUpdate({ name: 'Tire Pump' }, { price: 9 }, { new: true, runValidators: true })
+
+    await patient.save();
+    await provider.save();
+    //res.render("todoVerification")
+    res.redirect('/profile/' + req.user._id)
+  });
+
+
+)
+
+app.get('/history',
+  isLoggedIn,
+  (req,res) => {  res.render('homePatientHistory')
+})
+
 app.get('/history/pregbirth/form',
   isLoggedIn,
   (req,res) => {  res.render('formPregBirthHistory')
