@@ -24,7 +24,7 @@ router.get('/:providerId',
 router.get('/',
     isLoggedIn,
       async (req, res, next) => {
-      res.redirect('/profile/form/' + req.user.id)
+      res.redirect('/profile/' + req.user.id)
     })
 
 router.get('/form/:userId',
@@ -36,6 +36,7 @@ router.get('/form/:userId',
 router.post('/',
     isLoggedIn,
     async (req, res, next) => {
+        await Provider.deleteMany({userId:req.user._id})
         const provider = new Provider(
           { providerName: req.body.providerName,
             providerPronouns: req.body.providerPronouns,
@@ -47,18 +48,8 @@ router.post('/',
             providerBio: req.body.providerBio,
             userId: req.user._id
           })
-          // Convert the Model instance to a simple object using Model's 'toObject' function
-          // to prevent weirdness like infinite looping...
-          const upsertData = provider.toObject();
-
-          // Delete the _id property, otherwise Mongo will return a "Mod on _id not allowed" error
-          delete upsertData._id;
-
-          // Do the upsert, which works like this: If no Contact document exists with
-          // _id = contact.id, then create a new doc using upsertData.
-          // Otherwise, update the existing doc with upsertData
-          Provider.update({_id: provider.id}, upsertData, {upsert: true});
-          //res.render("todoVerification")
+        await provider.save();
+        //res.render("todoVerification")
         res.redirect('/profile/' + req.user._id)
     });
 
