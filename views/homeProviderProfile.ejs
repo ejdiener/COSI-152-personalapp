@@ -21,25 +21,25 @@
   <div class="col">
     <table class="table table-light table-striped table-bordered">
       <tbody>
-        <% if (typeof(provider.providerOrganization) == "string") {%>
+        <% if (provider.providerOrganization) {%>
           <tr>
             <td> Organization </td>
             <td> <%= provider.providerOrganization %> </td>
           </tr>
         <% } %>
-        <% if (typeof(provider.providerAddress) == "string") {%>
+        <% if (provider.providerAddress) {%>
           <tr>
             <td> Address </td>
             <td> <%= provider.providerAddress %> </td>
           </tr>
         <% } %>
-        <% if (typeof(provider.providerPhone) == "string") {%>
+        <% if (provider.providerPhone) {%>
           <tr>
             <td> Phone </td>
             <td> <%= provider.providerPhone %> </td>
           </tr>
         <% } %>
-        <% if (typeof(provider.providerEmail) == "string") {%>
+        <% if (provider.providerEmail) {%>
           <tr>
             <td> Email </td>
             <td> <%= provider.providerEmail %> </td>
