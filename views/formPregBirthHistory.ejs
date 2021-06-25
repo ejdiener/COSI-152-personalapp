@@ -15,15 +15,15 @@
   <h3> Pregnancy History </h3>
   <div class="row">
     <div class="col"> How many times has the mother been pregnant? </div>
-    <div class="col"> <input type="number" name ="total_pregnancies"></div>
+    <div class="col"> <input type="number" name ="mother_total_pregnancies"></div>
   </div>
   <div class="row">
     <div class="col"> How many children does the birth mother have? </div>
-    <div class="col"> <input type="number" name ="total_children"></div>
+    <div class="col"> <input type="number" name ="mother_total_children"></div>
   </div>
   <div class="row">
     <div class="col"> How many of those children are older than this child? </div>
-    <div class="col"> <input type="number" name ="older_children"></div>
+    <div class="col"> <input type="number" name ="mother_older_children"></div>
   </div><br>
   Did the birth mother...
   <table class="table table-bordered table-striped">
@@ -39,7 +39,7 @@
           <td> ...terminate any past pregnancies specifically due to a health problem/genetic condition of the baby? </td>
           <td> <input type="radio" name ="had_termination_anomalies" value="TRUE">&nbsp;YES&nbsp;&nbsp;
                <input type="radio" name ="had_termination_anomalies" value="FALSE">&nbsp;NO&nbsp;&nbsp;
-               <input type="radio" name ="had_miscarriage" value="UNKNOWN">&nbsp;UNKNOWN<br><br>
+               <input type="radio" name ="had_termination_anomalies" value="UNKNOWN">&nbsp;UNKNOWN<br><br>
                If yes, how many?&nbsp;<input type="number" name="termination_anomalies_total"><br>
                For what conditions?&nbsp;<input type="text" name="termination_anomalies_cause"></td>
       </tr>
@@ -48,19 +48,23 @@
           <td> <input type="radio" name ="required_fertility" value="TRUE">&nbsp;YES&nbsp;&nbsp;
                <input type="radio" name ="required_fertility" value="FALSE">&nbsp;NO&nbsp;&nbsp;
                <input type="radio" name ="required_fertility" value="UNKNOWN">&nbsp;UNKNOWN<br><br>
-               If yes, what treatment?&nbsp;<input type="text" name="received_fertility"></td>
+               If yes, what treatment?&nbsp;<input type="text" name="fertility_treatment"></td>
       </tr>
       <tr>
           <td> ...have prenatal care? </td>
           <td> <input type="radio" name ="had_prenatal_care" value="TRUE">&nbsp;YES&nbsp;&nbsp;
                <input type="radio" name ="had_prenatal_care" value="FALSE">&nbsp;NO&nbsp;&nbsp;
-               <input type="radio" name ="had_prenatal_care" value="UNKNOWN">&nbsp;UNKNOWN</td>
+               <input type="radio" name ="had_prenatal_care" value="UNKNOWN">&nbsp;UNKNOWN<br><br>
+               During which trimester(s)?<br>
+                  <input type="checkbox" name="trimesters_prenatal_care" value="1">&nbsp;1st&nbsp;&nbsp;
+                  <input type="checkbox" name="trimesters_prenatal_care" value="2">&nbsp;2nd&nbsp;&nbsp;
+                  <input type="checkbox" name="trimesters_prenatal_care" value="3">&nbsp;3rd</td>
       </tr>
       <tr>
           <td> ...receive any of the following prenatal tests? </td>
-          <td> <input type="checkbox" name ="had_prenatal_tests" value="had_ultrasound">&nbsp;Ultrasounds&nbsp;&nbsp;
-               <input type="checkbox" name ="had_prenatal_tests" value="had_amniocentesis">&nbsp;Amniocentesis&nbsp;&nbsp;
-               <input type="checkbox" name ="had_prenatal_tests" value="had_cvs">&nbsp;Chorionic villus sampling (CVS)<br><br>
+          <td> <input type="checkbox" name ="prenatal_tests" value="had_ultrasound">&nbsp;Ultrasounds&nbsp;&nbsp;
+               <input type="checkbox" name ="prenatal_tests" value="had_amniocentesis">&nbsp;Amniocentesis&nbsp;&nbsp;
+               <input type="checkbox" name ="prenatal_tests" value="had_cvs">&nbsp;Chorionic villus sampling (CVS)<br><br>
                If you received abnormal results on any of these tests, what was it?&nbsp;<input type="text" name="prenatal_diagnosis"></td>
       </tr>
       <tr>
@@ -104,13 +108,6 @@
                If yes, what prescription medications (if known)?&nbsp;<input type="text" name="prescription_pregnancy"></td>
       </tr>
       <tr>
-          <td> ...use any prescription medications during the pregnancy? </td>
-          <td> <input type="radio" name ="used_prescription_pregnancy" value="TRUE">&nbsp;YES&nbsp;&nbsp;
-               <input type="radio" name ="used_prescription_pregnancy" value="FALSE">&nbsp;NO&nbsp;&nbsp;
-               <input type="radio" name ="used_prescription_pregnancy" value="UNKNOWN">&nbsp;UNKNOWN<br><br>
-               If yes, what prescription medications (if known)?&nbsp;<input type="text" name="prescription_pregnancy"></td>
-      </tr>
-      <tr>
           <td> ...use cigarettes during the pregnancy? </td>
           <td> <input type="radio" name ="used_cigarettes_pregnancy" value="TRUE">&nbsp;YES&nbsp;&nbsp;
                <input type="radio" name ="used_cigarettes_pregnancy" value="FALSE">&nbsp;NO&nbsp;&nbsp;
@@ -123,7 +120,7 @@
                   <input type="checkbox" name="when_cigarettes_pregnancy" value="1">&nbsp;1st&nbsp;&nbsp;
                   <input type="checkbox" name="when_cigarettes_pregnancy" value="2">&nbsp;2nd&nbsp;&nbsp;
                   <input type="checkbox" name="when_cigarettes_pregnancy" value="3">&nbsp;3rd&nbsp;&nbsp;
-                  <input type="checkbox" name="when_cigarettes_pregnancy" value="UNKNOWN">&nbsp;Unknown&nbsp;&nbsp;</td>
+                  <input type="checkbox" name="when_cigarettes_pregnancy" value="UNKNOWN">&nbsp;Unknown</td>
       </tr>
       <tr>
           <td> ...use alcohol during the pregnancy? </td>
@@ -226,7 +223,8 @@
                <input type="checkbox" name="first_caregiver" value="grandparent">&nbsp;Grandparent(s)&nbsp;&nbsp;
                <input type="checkbox" name="first_caregiver" value="other_relative">&nbsp;Other relative(s)&nbsp;&nbsp;
                <input type="checkbox" name="first_caregiver" value="foster_parent">&nbsp;Foster parent(s)&nbsp;&nbsp;
-               <input type="checkbox" name="first_caregiver" value="other">&nbsp;Other<br><br>
+               <input type="checkbox" name="first_caregiver" value="other">&nbsp;Other&nbsp;&nbsp;
+               <input type="checkbox" name="first_caregiver" value="unknown">&nbsp;Unknown<br><br>
                   If other or other relative, please elaborate (if known).&nbsp;<input type="text" name="first_caregiver_other"> </td>
       </tr>
       <tr>
