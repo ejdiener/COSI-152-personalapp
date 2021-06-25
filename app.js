@@ -113,6 +113,18 @@ app.get('/profile',
       res.render('profile')
     })
 
+app.get('/history/pregbirth/form',
+    isLoggedIn,
+    (req,res) => {
+      res.render('formPregBirthHistory')
+})
+
+app.get('/WJ_IV_ACHform',
+    isLoggedIn,
+    (req,res) => {
+      res.render('formWJIVACH')
+})
+
 app.get('/editProfile',
     isLoggedIn,
     (req,res) => res.render('editProfile'))
