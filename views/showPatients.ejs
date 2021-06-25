@@ -1,0 +1,12 @@
+<%- include('bootheader') -%>
+<%- include('menubar') -%>
+
+<div class=jumbotron>
+  <h2> <%= provider.providerName %>'s Current Patients </h2>
+</div>
+
+<%= JSON.stringify(provider.patientIds) %><br>
+
+<a href='/patients/new/form'>Add new patient</a>
+
+<%- include('bootfooter') -%>
