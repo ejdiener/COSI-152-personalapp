@@ -1,6 +1,9 @@
-const express = require('express');
-const router = express.Router();
+/*
+const router = require('express').Router({mergeParams: true});
+
 const preg_birth = require('../models/PregBirth')
+router.use('/patients', require('../routes/patients'));
+
 
 isLoggedIn = (req,res,next) => {
   if (res.locals.loggedIn) {
@@ -13,21 +16,25 @@ isLoggedIn = (req,res,next) => {
 router.get('/',
   isLoggedIn,
   async (req, res, next) => {
+      let patientId = req.patientId;
       res.render('homeHistory');
-});
-
-router.get('/pregbirth/form/:patientId',
-  isLoggedIn,
-  async (req, res, next) => {
-      res.render('formPregBirthHistory');
 });
 
 router.get('/pregbirth',
   isLoggedIn,
   async (req, res, next) => {
-    res.locals.hist = await PregBirth.find({userId:req.user._id})
+    let patientId = req.patientId;
+    res.locals.hist = await PregBirth.find({patientId:req.params.patientId})
     res.render('viewPregBirthHistory');
+});
+
+router.get('/pregbirth/form',
+  isLoggedIn,
+  async (req, res, next) => {
+      let patientId = req.patientId;
+      res.render('formPregBirthHistory');
 });
 
 
 module.exports = router;
+*/
