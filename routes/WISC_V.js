@@ -20,7 +20,7 @@ router.get('/show',
   isLoggedIn,
   async (req, res, next) => {
     res.locals.eval = await WISCV.find({userId:req.user._id})
-    res.render('viewWISCV');
+    res.render('showWISCV');
 });
 
 router.post('/show',
@@ -29,7 +29,6 @@ router.post('/show',
       console.log("2")
       const wiscv = new WISCV({
         userId: req.user._id,
-        evalId: {type:ObjectId},
         wisc_vDate: req.body.wisc_vDate,
         wisc_vSI: req.body.wisc_vSI,
         wisc_vVC: req.body.wisc_vVC,
@@ -65,7 +64,7 @@ router.post('/show',
       await wiscv.save();
       res.locals.eval = wiscv
       //res.render("todoVerification")
-      res.render('viewWISCV')
+      res.render('showWISCV')
 });
 
 module.exports = router;
