@@ -1,0 +1,91 @@
+<%- include('bootheader') -%>
+<%- include('menubar') -%>
+
+<div class=jumbotron>
+  <h2>Provider Information</h2>
+</div>
+
+<form method="post" action="/profile">
+  Please enter the following information:
+  <div class="row">
+    <div class="col"> Name of provider: </div>
+    <div class="col"> <input type="text" name ="providerName" value="<%= provider.providerName %>">
+    </div>
+  </div>
+  <div class="row">
+    <div class="col"> Provider's pronouns: </div>
+    <div class="col"> <select name="providerPronouns">
+                        <option value="he"> He/him/his </option>
+                        <option value="she"> She/her/hers </option>
+                        <option value="they"> They/them/theirs </option>
+                        <option value="xe"> Xe/xem/xirs </option>
+                      </select>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col"> Role in care of the patient: </div>
+    <div class="col"> <input type="Radio" name ="providerRole" value='guardian'>&nbsp;Parent/Guardian<br>
+                      <input type="Radio" name ="providerRole" value='primary_care_physician'>&nbsp;Primary Care Physician/Pediatrician<br>
+                      <input type="Radio" name ="providerRole" value='developmental_behavioral_pediatrician'>&nbsp;Developmental-Behavioral Pediatrician<br>
+                      <input type="Radio" name ="providerRole" value='teacher'>&nbsp;Teacher<br>
+                      <input type="Radio" name ="providerRole" value='classroom_aide'>&nbsp;Classroom Aide<br>
+                      <input type="Radio" name ="providerRole" value='psychologist'>&nbsp;Psychologist<br>
+                      <input type="Radio" name ="providerRole" value='speech_language_therapist'>&nbsp;Speech-Language Therapist<br>
+                      <input type="Radio" name ="providerRole" value='occupational_therapist'>&nbsp;Occupational Therapist<br>
+                      <input type="Radio" name ="providerRole" value='physical_therapist'>&nbsp;Physical Therapist<br>
+                      <input type="Radio" name ="providerRole" value='developmental_specialist'>&nbsp;Developmental Specialist<br>
+                      <input type="Radio" name ="providerRole" value='behavioral_therapist'>&nbsp;Behavioral Therapist<br>
+                      <input type="Radio" name ="providerRole" value='cognitive_behavioral_therapist'>&nbsp;Cognitive-Behavioral Therapist<br>
+                      <input type="Radio" name ="providerRole" value='social_worker'>&nbsp;Social Worker<br>
+                      <input type="Radio" name ="providerRole" value='care_coordinator'>&nbsp;Care Coordinator<br>
+                      <input type="Radio" name ="providerRole" value='other'>&nbsp;Other:&nbsp;<input type="text" name ="providerRole_other">
+    </div>
+  </div>
+  <div class="row">
+    <div class="col"> Title that should follow your name: </div>
+    <div class="col"> <input type="Checkbox" name ="providerEducation" value ="md">&nbsp;MD&nbsp;&nbsp;
+                      <input type="Checkbox" name ="providerEducation" value ="phd">&nbsp;MD&nbsp;&nbsp;
+                      <input type="Checkbox" name ="providerEducation" value ="ms">&nbsp;MS&nbsp;&nbsp;
+                      <input type="Checkbox" name ="providerEducation" value ="ma">&nbsp;MA&nbsp;&nbsp;
+                      <input type="Checkbox" name ="providerEducation" value ="ccc_slp">&nbsp;CCC-SLP&nbsp;&nbsp;
+                      <input type="Checkbox" name ="providerEducation" value ="otr">&nbsp;OTR&nbsp;&nbsp;
+                      <input type="Checkbox" name ="providerEducation" value ="pt">&nbsp;PT&nbsp;&nbsp;
+                      <input type="Checkbox" name ="providerEducation" value ="lcsw">&nbsp;LCSW&nbsp;&nbsp;
+                    </div>
+  </div>
+  <div class="row">
+    <div class="col"> Name of organization: </div>
+    <div class="col"> <input type="text" name ="providerOrganization" value="<%= provider.providerOrganization %>">
+    </div>
+  </div>
+  <div class="row">
+    <div class="col"> Address do you practice at: </div>
+    <div class="col"> <input type="text" name ="providerAddress" value="<%= provider.providerAddress %>">
+    </div>
+  </div>
+  <div class="row">
+    <div class="col"> Phone number: </div>
+    <div class="col"> <input type="text" name ="providerPhone" value="<%= provider.providerPhone %>">
+    </div>
+  </div>
+  <div class="row">
+    <div class="col"> Email: </div>
+    <div class="col"> <input type="text" name ="providerEmail" value="<%= provider.providerEmail %>">
+    </div>
+  </div>
+  <div class="row">
+    <div class="col"> Bio: </div>
+    <div class="col"> <textarea name="providerBio" rows="2" col="40"></textarea>
+    </div>
+  </div>
+  <!-- <div class="row">
+    <div class="col"> Photo: </div>
+    <div class="col"> <input type="file" name ="providerPhoto">
+    </div>
+  </div> -->
+  <hr>
+
+  <input type="submit" name="Submit">
+</form>
+
+<%- include('bootfooter') -%>
