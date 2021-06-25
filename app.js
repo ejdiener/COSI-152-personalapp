@@ -28,6 +28,9 @@ const usersRouter = require('./routes/users');
 const toDoRouter = require('./routes/todo');
 const toDoAjaxRouter = require('./routes/todoAjax');
 const profileRouter = require('./routes/profile');
+const patientsRouter = require('./routes/patients');
+const historyRouter = require('./routes/history');
+
 const wiscvRouter = require('./routes/WISC_V');
 const tempRouter = require('./routes/temp');
 
@@ -52,6 +55,7 @@ app.use(loggingRouter);
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/profile', profileRouter);
+app.use('/patients', patientsRouter);
 
 app.use('/todo',toDoRouter);
 app.use('/todoAjax',toDoAjaxRouter);
@@ -65,76 +69,37 @@ const myLogger = (req,res,next) => {
   next()
 }
 
-/*
-app.get('/testing',
-  myLogger,
-  isLoggedIn,
-  (req,res) => {  res.render('testing')
-})
-
-app.get('/testing2',(req,res) => {
-  res.render('testing2')
-})
-
- app.get('/profiles',
-    isLoggedIn,
-    async (req,res,next) => {
-      try {
-        res.locals.profiles = await User.find({})
-        res.render('profiles')
-      }
-      catch(e){
-        next(e)
-      }
-    }
-  )
-
-app.use('/publicprofile/:userId',
-    async (req,res,next) => {
-      try {
-        let userId = req.params.userId
-        res.locals.profile = await User.findOne({_id:userId})
-        res.render('publicprofile')
-      }
-      catch(e){
-        console.log("Error in /profile/userId:")
-        next(e)
-      }
-    }
-) */
+const Patient = require('./models/Patient');
+const Provider = require('./models/Provider');
 
 app.post("/formNewPatient",
   isLoggedIn,
   async (req, res, next) => {
     const patient = new Patient(
-      patientName: req.body.patientName,
+    { patientName: req.body.patientName,
+      patientPronouns: req.body.patientPronouns,
+      patientAddress: req.body.patientAddress,
+      patientPhone: req.body.patientPhone,
+      patientBio: req.body.patientBio,
     })
-    const provider = await Provider.findOne({userId:req.user._id})
-    Provider.findOneAndUpdate({ name: 'Tire Pump' }, { price: 9 }, { new: true, runValidators: true })
-
     await patient.save();
-    await provider.save();
+    console.log(patient._id)
+    const provider = await Provider.findOne({userId:req.user._id})
+    patient.updateOne(
+      {$push: {CurrentProvidersIds:req.user._id}},
+      {safe: true, upsert: true},
+      function(err, model) {
+        console.log(err);
+      });
+    provider.updateOne(
+      {$push: {PatientIds:patient._id}},
+      {safe: true, upsert: true},
+      function(err, model) {
+        console.log(err);
+      });
     //res.render("todoVerification")
-    res.redirect('/profile/' + req.user._id)
+    res.redirect('/patients')
   });
-
-
-)
-
-app.get('/history',
-  isLoggedIn,
-  (req,res) => {  res.render('homePatientHistory')
-})
-
-app.get('/history/pregbirth/form',
-  isLoggedIn,
-  (req,res) => {  res.render('formPregBirthHistory')
-})
-
-app.get('/history/family/form',
-  isLoggedIn,
-  (req,res) => {  res.render('formFamilyHistory')
-})
 
 app.get('/WJIVACH/form',
   isLoggedIn,
