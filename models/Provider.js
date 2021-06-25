@@ -16,7 +16,7 @@ var ProviderSchema = Schema( {
   providerBio: String,
 //  providerPhoto: File,
 
-  patientIds: [Schema.Types.ObjectId],  //LIST
+  patientIds: [{type:ObjectId, ref:"Patient"}],  //LIST
 
 } );
 
