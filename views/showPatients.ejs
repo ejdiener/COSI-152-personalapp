@@ -4,8 +4,17 @@
 <div class=jumbotron>
   <h2> <%= provider.providerName %>'s Current Patients </h2>
 </div>
+<hr>
+<% console.log("3")
+console.log(patients) %><br>
 
-<%= JSON.stringify(provider.patientIds) %><br>
+<div id="list">
+ <% patients.forEach(patient => { %>
+      <% const link = '/patients/' + patient._id %>
+      <a href=<%= link %>><h4> <%= patient.patientName %> </h4></a>
+      <hr>
+ <% }) %>
+</div>
 
 <a href='/patients/new/form'>Add new patient</a>
 
