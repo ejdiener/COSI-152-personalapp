@@ -1,0 +1,557 @@
+<%- include('bootheader') -%>
+<%- include('menubar') -%>
+
+<div class=jumbotron>
+<h2>Pregnancy and Birth History</h2>
+</div>
+
+<form method="post" action="/history/pregbirth/form">
+  Is this child adopted?<br>
+    <% if (pregbirth.adoptionStatus == "FALSE") { %>
+      <input type="radio" name="adoption_status" value="FALSE" checked>&nbsp;NO&nbsp;&nbsp;
+    <% } else { %>
+      <input type="radio" name="adoption_status" value="FALSE">&nbsp;NO&nbsp;&nbsp;
+    <% } if (pregbirth.adoptionStatus == "TRUE") { %>
+      <input type="radio" name="adoption_status" value="TRUE" checked>&nbsp;YES from <input type="text" name="country"
+             placeholder="country of origin" value="pregbirth.countryOfOrigin">
+    <% } else { %>
+      <input type="radio" name="adoption_status" value="TRUE">&nbsp;YES from <input type="text" name="country"
+             placeholder="country of origin">
+    <% } %>
+  <hr>
+
+  <h3> Pregnancy History </h3>
+  <div class="row">
+    <div class="col"> How many times has the mother been pregnant? </div>
+    <div class="col"> <input type="number" name="mother_total_pregnancies" value="<%= pregbirth.motherTotalPregnancies %>"></div>
+  </div>
+  <div class="row">
+    <div class="col"> How many children does the birth mother have? </div>
+    <div class="col"> <input type="number" name ="mother_total_children" value="<%= pregbirth.motherTotalChildren %>"></div>
+  </div>
+  <div class="row">
+    <div class="col"> How many of those children are older than this child? </div>
+    <div class="col"> <input type="number" name ="mother_older_children" value="<%= pregbirth.motherOlderChildren %>"></div>
+  </div><br>
+  Did the birth mother...
+  <table class="table table-bordered table-striped">
+    <tbody>
+      <tr>
+          <td> ...lose any pregnancies (have a miscarriage)? </td>
+          <td>  <% if (pregbirth.hadMiscarriage == "TRUE") { %>
+                  <input type="radio" name ="had_miscarriage" value="TRUE" checked>&nbsp;YES&nbsp;&nbsp;
+                <% } else { %>
+                  <input type="radio" name ="had_miscarriage" value="TRUE">&nbsp;YES&nbsp;&nbsp;
+                <% } if (pregbirth.hadMiscarriage == "FALSE") { %>
+                  <input type="radio" name ="had_miscarriage" value="FALSE" checked>&nbsp;NO&nbsp;&nbsp;
+                <% } else { %>
+                  <input type="radio" name ="had_miscarriage" value="FALSE">&nbsp;NO&nbsp;&nbsp;
+                <% } if (pregbirth.hadMiscarriage == "UNKNOWN") { %>
+                  <input type="radio" name ="had_miscarriage" value="UNKNOWN" checked>&nbsp;UNKNOWN<br><br>
+                <% } else { %>
+                  <input type="radio" name ="had_miscarriage" value="UNKNOWN">&nbsp;UNKNOWN<br><br>
+                <% } %>
+               If yes, how many?&nbsp;<input type="number" name ="miscarriages_total" value="<%= pregbirth.miscarriagesTotal %>"></td>
+      </tr>
+      <tr>
+          <td> ...terminate any past pregnancies specifically due to a health problem/genetic condition of the baby? </td>
+          <td>  <% if (pregbirth.hadTerminationAnomalies == "TRUE") { %>
+                  <input type="radio" name ="had_termination_anomalies" value="TRUE" checked>&nbsp;YES&nbsp;&nbsp;
+                <% } else { %>
+                  <input type="radio" name ="had_termination_anomalies" value="TRUE">&nbsp;YES&nbsp;&nbsp;
+                <% } if (pregbirth.hadTerminationAnomalies == "FALSE") { %>
+                  <input type="radio" name ="had_termination_anomalies" value="FALSE" checked>&nbsp;NO&nbsp;&nbsp;
+                <% } else { %>
+                  <input type="radio" name ="had_termination_anomalies" value="FALSE">&nbsp;NO&nbsp;&nbsp;
+                <% } if (pregbirth.hadTerminationAnomalies == "UNKNOWN") { %>
+                  <input type="radio" name ="had_termination_anomalies" value="UNKNOWN" checked>&nbsp;UNKNOWN<br><br>
+                <% } else { %>
+                  <input type="radio" name ="had_termination_anomalies" value="UNKNOWN">&nbsp;UNKNOWN<br><br>
+                <% } %>
+               If yes, how many?&nbsp;<input type="number" name="termination_anomalies_total" value="<%= pregbirth.terminationAnomaliesTotal %>"><br>
+               For what conditions?&nbsp;<input type="text" name="termination_anomalies_cause" value="<%= pregbirth.terminationAnomaliesCause %>"></td>
+      </tr>
+      <tr>
+          <td> ...require treatment to become pregnant with this child? </td>
+          <td>  <% if (pregbirth.requiredFertilityTreatment == "TRUE") { %>
+                  <input type="radio" name ="required_fertility" value="TRUE" checked>&nbsp;YES&nbsp;&nbsp;
+                <% } else { %>
+                  <input type="radio" name ="required_fertility" value="TRUE">&nbsp;YES&nbsp;&nbsp;
+                <% } if (pregbirth.requiredFertilityTreatment == "FALSE") { %>
+                  <input type="radio" name ="required_fertility" value="FALSE" checked>&nbsp;NO&nbsp;&nbsp;
+                <% } else { %>
+                  <input type="radio" name ="required_fertility" value="FALSE">&nbsp;NO&nbsp;&nbsp;
+                <% } if (pregbirth.requiredFertilityTreatment == "UNKNOWN") { %>
+                  <input type="radio" name ="required_fertility" value="UNKNOWN" checked>&nbsp;UNKNOWN<br><br>
+                <% } else { %>
+                  <input type="radio" name ="required_fertility" value="UNKNOWN">&nbsp;UNKNOWN<br><br>
+                <% } %>
+               If yes, what treatment?&nbsp;<input type="text" name="fertility_treatment" value="<%= pregbirth.fertilityTreatment %>"></td>
+      </tr>
+      <tr>
+          <td> ...have prenatal care? </td>
+          <td>  <% if (pregbirth.hadPrenatalCare == "TRUE") { %>
+                  <input type="radio" name ="had_prenatal_care" value="TRUE" checked>&nbsp;YES&nbsp;&nbsp;
+                <% } else { %>
+                  <input type="radio" name ="had_prenatal_care" value="TRUE">&nbsp;YES&nbsp;&nbsp;
+                <% } if (pregbirth.hadPrenatalCare == "FALSE") { %>
+                  <input type="radio" name ="had_prenatal_care" value="FALSE" checked>&nbsp;NO&nbsp;&nbsp;
+                <% } else { %>
+                  <input type="radio" name ="had_prenatal_care" value="FALSE">&nbsp;NO&nbsp;&nbsp;
+                <% } if (pregbirth.hadPrenatalCare == "UNKNOWN") { %>
+                  <input type="radio" name ="had_prenatal_care" value="UNKNOWN" checked>&nbsp;UNKNOWN<br><br>
+                <% } else { %>
+                  <input type="radio" name ="had_prenatal_care" value="UNKNOWN">&nbsp;UNKNOWN<br><br>
+                <% } %>
+               During which trimester(s)?<br>
+                    <% if (pregbirth.trimestersPrenatalCare == "1") { %>
+                       <input type="checkbox" name ="trimesters_prenatal_care" value="1" checked>&nbsp;1st&nbsp;&nbsp;
+                    <% } else { %>
+                       <input type="checkbox" name ="trimesters_prenatal_care" value="1">&nbsp;1st&nbsp;&nbsp;
+                    <% } if (pregbirth.trimestersPrenatalCare == "2") { %>
+                       <input type="checkbox" name ="trimesters_prenatal_care" value="2" checked>&nbsp;2nd&nbsp;&nbsp;
+                    <% } else { %>
+                       <input type="checkbox" name ="trimesters_prenatal_care" value="2">&nbsp;2nd&nbsp;&nbsp;
+                    <% } if (pregbirth.trimestersPrenatalCare == "3") { %>
+                       <input type="checkbox" name ="trimesters_prenatal_care" value="3" checked>&nbsp;3rd
+                    <% } else { %>
+                       <input type="checkbox" name ="trimesters_prenatal_care" value="3">&nbsp;3rd
+                    <% } %></td>
+      </tr>
+      <tr>
+          <td> ...receive any of the following prenatal tests? </td>
+          <td>  <% if (pregbirth.prenatalTests == "had_ultrasound") { %>
+                   <input type="checkbox" name ="prenatal_tests" value="had_ultrasound" checked>&nbsp;Ultrasounds&nbsp;&nbsp;
+                <% } else { %>
+                   <input type="checkbox" name ="prenatal_tests" value="had_ultrasound">&nbsp;Ultrasounds&nbsp;&nbsp;
+                <% } if (pregbirth.prenatalTests == "had_amniocentesis") { %>
+                   <input type="checkbox" name ="prenatal_tests" value="had_amniocentesis" checked>&nbsp;Amniocentesis&nbsp;&nbsp;
+                <% } else { %>
+                   <input type="checkbox" name ="prenatal_tests" value="had_amniocentesis">&nbsp;Amniocentesis&nbsp;&nbsp;
+                <% } if (pregbirth.prenatalTests == "had_cvs") { %>
+                   <input type="checkbox" name ="prenatal_tests" value="had_cvs" checked>&nbsp;Chorionic villus sampling (CVS)<br><br>
+                <% } else { %>
+                   <input type="checkbox" name ="prenatal_tests" value="had_cvs">&nbsp;Chorionic villus sampling (CVS)<br><br>
+                <% } %>
+               If you received abnormal results on any of these tests, what was it?&nbsp;<input type="text" name="prenatal_diagnosis" value="<%= pregbirth.prenatalDiagnosis %>"></td>
+      </tr>
+      <tr>
+          <td> ...have any infections or fevers during the pregnancy? </td>
+          <td>  <% if (pregbirth.hadInfectionPregnancy == "TRUE") { %>
+                  <input type="radio" name ="had_infection_pregnancy" value="TRUE" checked>&nbsp;YES&nbsp;&nbsp;
+                <% } else { %>
+                  <input type="radio" name ="had_infection_pregnancy" value="TRUE">&nbsp;YES&nbsp;&nbsp;
+                <% } if (pregbirth.hadInfectionPregnancy == "FALSE") { %>
+                  <input type="radio" name ="had_infection_pregnancy" value="FALSE" checked>&nbsp;NO&nbsp;&nbsp;
+                <% } else { %>
+                  <input type="radio" name ="had_infection_pregnancy" value="FALSE">&nbsp;NO&nbsp;&nbsp;
+                <% } if (pregbirth.hadInfectionPregnancy == "UNKNOWN") { %>
+                  <input type="radio" name ="had_infection_pregnancy" value="UNKNOWN" checked>&nbsp;UNKNOWN<br><br>
+                <% } else { %>
+                  <input type="radio" name ="had_infection_pregnancy" value="UNKNOWN">&nbsp;UNKNOWN<br><br>
+                <% } %>
+               If yes, what infection (if known)?&nbsp;<input type="text" name="infection_pregnancy" value="<%= pregbirth.infectionPregnancy %>"></td>
+      </tr>
+      <tr>
+          <td> ...have high blood pressure during the pregnancy? </td>
+          <td>  <% if (pregbirth.hadHypertensionPregnancy == "TRUE") { %>
+                  <input type="radio" name ="had_hypertension_pregnancy" value="TRUE" checked>&nbsp;YES&nbsp;&nbsp;
+                <% } else { %>
+                  <input type="radio" name ="had_infection_pregnancy" value="TRUE">&nbsp;YES&nbsp;&nbsp;
+                <% } if (pregbirth.hadHypertensionPregnancy == "FALSE") { %>
+                  <input type="radio" name ="had_hypertension_pregnancy" value="FALSE" checked>&nbsp;NO&nbsp;&nbsp;
+                <% } else { %>
+                  <input type="radio" name ="had_hypertension_pregnancy" value="FALSE">&nbsp;NO&nbsp;&nbsp;
+                <% } if (pregbirth.hadHypertensionPregnancy == "UNKNOWN") { %>
+                  <input type="radio" name ="had_hypertension_pregnancy" value="UNKNOWN" checked>&nbsp;UNKNOWN
+                <% } else { %>
+                  <input type="radio" name ="had_hypertension_pregnancy" value="UNKNOWN">&nbsp;UNKNOWN
+                <% } %></td>
+      </tr>
+      <tr>
+          <td> ...have gestational diabetes during the pregnancy? </td>
+          <td>  <% if (pregbirth.hadDiabetesPregnancy == "TRUE") { %>
+                  <input type="radio" name ="had_diabetes_pregnancy" value="TRUE" checked>&nbsp;YES&nbsp;&nbsp;
+                <% } else { %>
+                  <input type="radio" name ="had_diabetes_pregnancy" value="TRUE">&nbsp;YES&nbsp;&nbsp;
+                <% } if (pregbirth.hadDiabetesPregnancy == "FALSE") { %>
+                  <input type="radio" name ="had_diabetes_pregnancy" value="FALSE" checked>&nbsp;NO&nbsp;&nbsp;
+                <% } else { %>
+                  <input type="radio" name ="had_diabetes_pregnancy" value="FALSE">&nbsp;NO&nbsp;&nbsp;
+                <% } if (pregbirth.hadDiabetesPregnancy == "UNKNOWN") { %>
+                  <input type="radio" name ="had_diabetes_pregnancy" value="UNKNOWN" checked>&nbsp;UNKNOWN
+                <% } else { %>
+                  <input type="radio" name ="had_diabetes_pregnancy" value="UNKNOWN">&nbsp;UNKNOWN
+                <% } %></td>
+      </tr>
+      <tr>
+          <td> ...use any vitamins/over-the-counter medications during the pregnancy? </td>
+          <td>  <% if (pregbirth.usedOverTheCounterPregnancy == "TRUE") { %>
+                  <input type="radio" name ="used_overthecounter_pregnancy" value="TRUE" checked>&nbsp;YES&nbsp;&nbsp;
+                <% } else { %>
+                  <input type="radio" name ="used_overthecounter_pregnancy" value="TRUE">&nbsp;YES&nbsp;&nbsp;
+                <% } if (pregbirth.usedOverTheCounterPregnancy == "FALSE") { %>
+                  <input type="radio" name ="used_overthecounter_pregnancy" value="FALSE" checked>&nbsp;NO&nbsp;&nbsp;
+                <% } else { %>
+                  <input type="radio" name ="used_overthecounter_pregnancy" value="FALSE">&nbsp;NO&nbsp;&nbsp;
+                <% } if (pregbirth.usedOverTheCounterPregnancy == "UNKNOWN") { %>
+                  <input type="radio" name ="used_overthecounter_pregnancy" value="UNKNOWN" checked>&nbsp;UNKNOWN<br><br>
+                <% } else { %>
+                  <input type="radio" name ="used_overthecounter_pregnancy" value="UNKNOWN">&nbsp;UNKNOWN<br><br>
+                <% } %>
+               If yes, what vitamins/medications (if known)?&nbsp;<input type="text" name="overthecounter_pregnancy" value="<%= pregbirth.overTheCounterPregnancy %>"></td>
+      </tr>
+      <tr>
+          <td> ...use any herbal remedies during the pregnancy? </td>
+          <td>  <% if (pregbirth.usedHerbalPregnancy == "TRUE") { %>
+                  <input type="radio" name ="used_herbal" value="TRUE" checked>&nbsp;YES&nbsp;&nbsp;
+                <% } else { %>
+                  <input type="radio" name ="used_herbal" value="TRUE">&nbsp;YES&nbsp;&nbsp;
+                <% } if (pregbirth.usedHerbalPregnancy == "FALSE") { %>
+                  <input type="radio" name ="used_herbal" value="FALSE" checked>&nbsp;NO&nbsp;&nbsp;
+                <% } else { %>
+                  <input type="radio" name ="used_herbal" value="FALSE">&nbsp;NO&nbsp;&nbsp;
+                <% } if (pregbirth.usedHerbalPregnancy == "UNKNOWN") { %>
+                  <input type="radio" name ="used_herbal" value="UNKNOWN" checked>&nbsp;UNKNOWN<br><br>
+                <% } else { %>
+                  <input type="radio" name ="used_herbal" value="UNKNOWN">&nbsp;UNKNOWN<br><br>
+                <% } %>
+               If yes, what herbal remedies (if known)?&nbsp;<input type="text" name="herbal_pregnancy" value="<%= pregbirth.herbalPregnancy %>"></td>
+      </tr>
+      <tr>
+          <td> ...use any prescription medications during the pregnancy? </td>
+          <td>  <% if (pregbirth.usedPrescriptionPregnancy == "TRUE") { %>
+                  <input type="radio" name ="used_prescription_pregnancy" value="TRUE" checked>&nbsp;YES&nbsp;&nbsp;
+                <% } else { %>
+                  <input type="radio" name ="used_prescription_pregnancy" value="TRUE">&nbsp;YES&nbsp;&nbsp;
+                <% } if (pregbirth.usedPrescriptionPregnancy == "FALSE") { %>
+                  <input type="radio" name ="used_prescription_pregnancy" value="FALSE" checked>&nbsp;NO&nbsp;&nbsp;
+                <% } else { %>
+                  <input type="radio" name ="used_prescription_pregnancy" value="FALSE">&nbsp;NO&nbsp;&nbsp;
+                <% } if (pregbirth.usedPrescriptionPregnancy == "UNKNOWN") { %>
+                  <input type="radio" name ="used_prescription_pregnancy" value="UNKNOWN" checked>&nbsp;UNKNOWN<br><br>
+                <% } else { %>
+                  <input type="radio" name ="used_prescription_pregnancy" value="UNKNOWN">&nbsp;UNKNOWN<br><br>
+                <% } %>
+               If yes, what prescription medications (if known)?&nbsp;<input type="text" name="prescription_pregnancy" value="<%= pregbirth.prescriptionPregnancy %>"></td>
+      </tr>
+      <tr>
+          <td> ...use cigarettes during the pregnancy? </td>
+          <td>  <% if (pregbirth.usedCigarettesPregnancy == "TRUE") { %>
+                  <input type="radio" name ="used_cigarettes_pregnancy" value="TRUE" checked>&nbsp;YES&nbsp;&nbsp;
+                <% } else { %>
+                  <input type="radio" name ="used_cigarettes_pregnancy" value="TRUE">&nbsp;YES&nbsp;&nbsp;
+                <% } if (pregbirth.usedCigarettesPregnancy == "FALSE") { %>
+                  <input type="radio" name ="used_cigarettes_pregnancy" value="FALSE" checked>&nbsp;NO&nbsp;&nbsp;
+                <% } else { %>
+                  <input type="radio" name ="used_cigarettes_pregnancy" value="FALSE">&nbsp;NO&nbsp;&nbsp;
+                <% } if (pregbirth.usedCigarettesPregnancy == "UNKNOWN") { %>
+                  <input type="radio" name ="used_cigarettes_pregnancy" value="UNKNOWN" checked>&nbsp;UNKNOWN<br><br>
+                <% } else { %>
+                  <input type="radio" name ="used_cigarettes_pregnancy" value="UNKNOWN">&nbsp;UNKNOWN<br><br>
+                <% } %>
+               If yes, how many per day?<br>
+                  <input type="number" name="cigarettes_per_day_pregnancy" value="<%= pregbirth.cigarettesPerDayPregnancy %>">&nbsp;
+                  <% if (pregbirth.cigarettesPerDayPregnancyUnit == "loose") { %>
+                    <input type="radio" name="adoption_status" value="loose" checked> loose&nbsp;
+                  <% } else { %>
+                    <input type="radio" name="adoption_status" value="loose"> loose&nbsp;
+                  <% } if (pregbirth.cigarettesPerDayPregnancyUnit == "packs") { %>
+                    <input type="radio" name ="cigarettes_per_day_pregnancy_unit" value="packs" checked> packs<br><br>
+                  <% } else { %>
+                    <input type="radio" name ="cigarettes_per_day_pregnancy_unit" value="packs"> packs<br><br>
+                  <% } %>
+               During which trimester(s)?<br>
+                   <% if (pregbirth.whenCigarettesPregnancy == "1") { %>
+                     <input type="checkbox" name ="when_cigarettes_pregnancy" value="1" checked>&nbsp;1st&nbsp;&nbsp;
+                   <% } else { %>
+                     <input type="checkbox" name ="when_cigarettes_pregnancy" value="1">&nbsp;1st&nbsp;&nbsp;
+                   <% } if (pregbirth.whenCigarettesPregnancy == "2") { %>
+                     <input type="checkbox" name ="when_cigarettes_pregnancy" value="2" checked>&nbsp;2nd&nbsp;&nbsp;
+                   <% } else { %>
+                     <input type="checkbox" name ="when_cigarettes_pregnancy" value="2">&nbsp;2nd&nbsp;&nbsp;
+                   <% } if (pregbirth.whenCigarettesPregnancy == "3") { %>
+                     <input type="checkbox" name ="when_cigarettes_pregnancy" value="3" checked>&nbsp;3rd&nbsp;&nbsp;
+                   <% } else { %>
+                     <input type="checkbox" name ="when_cigarettes_pregnancy" value="3">&nbsp;3rd&nbsp;&nbsp;
+                   <% } if (pregbirth.whenCigarettesPregnancy == "UNKNOWN") { %>
+                     <input type="checkbox" name ="when_cigarettes_pregnancy" value="UNKNOWN" checked>&nbsp;Unknown<br><br>
+                   <% } else { %>
+                     <input type="checkbox" name ="when_cigarettes_pregnancy" value="UNKNOWN">&nbsp;Unknown<br><br>
+                   <% } %></td>
+      </tr>
+      <tr>
+          <td> ...use alcohol during the pregnancy? </td>
+          <td>  <% if (pregbirth.usedAlcoholPregnancy == "TRUE") { %>
+                  <input type="radio" name ="used_alcohol_pregnancy" value="TRUE" checked>&nbsp;YES&nbsp;&nbsp;
+                <% } else { %>
+                  <input type="radio" name ="used_alcohol_pregnancy" value="TRUE">&nbsp;YES&nbsp;&nbsp;
+                <% } if (pregbirth.usedAlcoholPregnancy == "FALSE") { %>
+                  <input type="radio" name ="used_alcohol_pregnancy" value="FALSE" checked>&nbsp;NO&nbsp;&nbsp;
+                <% } else { %>
+                  <input type="radio" name ="used_alcohol_pregnancy" value="FALSE">&nbsp;NO&nbsp;&nbsp;
+                <% } if (pregbirth.usedAlcoholPregnancy == "UNKNOWN") { %>
+                  <input type="radio" name ="used_alcohol_pregnancy" value="UNKNOWN" checked>&nbsp;UNKNOWN<br><br>
+                <% } else { %>
+                  <input type="radio" name ="used_alcohol_pregnancy" value="UNKNOWN">&nbsp;UNKNOWN<br><br>
+                <% } %>
+               If yes, how many drinks?<br>
+                 <% if (pregbirth.alcoholPerDayPregnancy == "1_per_week") { %>
+                   <input type="radio" name ="alcohol_per_day_pregnancy" value="1_per_week" checked> &nbsp;1 drink or less per week&nbsp;&nbsp;
+                 <% } else { %>
+                   <input type="radio" name ="alcohol_per_day_pregnancy" value="1_per_week"> &nbsp;1 drink or less per week&nbsp;&nbsp;
+                 <% } if (pregbirth.alcoholPerDayPregnancy == "1_per_day") { %>
+                   <input type="radio" name ="alcohol_per_day_pregnancy" value="1_per_day" checked> &nbsp;1 drink or less per day&nbsp;&nbsp;
+                 <% } else { %>
+                   <input type="radio" name ="alcohol_per_day_pregnancy" value="1_per_day"> &nbsp;1 drink or less per day&nbsp;&nbsp;
+                 <% } if (pregbirth.alcoholPerDayPregnancy == "2_plus_per_day") { %>
+                   <input type="radio" name ="alcohol_per_day_pregnancy" value="2_plus_per_day" checked> &nbsp;2 drinks or more per day&nbsp;&nbsp;
+                 <% } else { %>
+                   <input type="radio" name ="alcohol_per_day_pregnancy" value="2_plus_per_day"> &nbsp;2 drinks or more per day&nbsp;&nbsp;
+                 <% } if (pregbirth.alcoholPerDayPregnancy == "UNKNOWN") { %>
+                   <input type="radio" name ="alcohol_per_day_pregnancy" value="UNKNOWN" checked> &nbsp;Amount unknown<br><br>
+                 <% } else { %>
+                   <input type="radio" name ="alcohol_per_day_pregnancy" value="UNKNOWN"> &nbsp;Amount unknown<br><br>
+                 <% } %>
+               During which trimester(s)?<br>
+                   <% if (pregbirth.whenAlcoholPregnancy == "1") { %>
+                     <input type="checkbox" name ="when_alcohol_pregnancy" value="1" checked>&nbsp;1st&nbsp;&nbsp;
+                   <% } else { %>
+                     <input type="checkbox" name ="when_alcohol_pregnancy" value="1">&nbsp;1st&nbsp;&nbsp;
+                   <% } if (pregbirth.whenAlcoholPregnancy == "2") { %>
+                     <input type="checkbox" name ="when_alcohol_pregnancy" value="2" checked>&nbsp;2nd&nbsp;&nbsp;
+                   <% } else { %>
+                     <input type="checkbox" name ="when_alcohol_pregnancy" value="2">&nbsp;2nd&nbsp;&nbsp;
+                   <% } if (pregbirth.whenAlcoholPregnancy == "3") { %>
+                     <input type="checkbox" name ="when_alcohol_pregnancy" value="3" checked>&nbsp;3rd&nbsp;&nbsp;
+                   <% } else { %>
+                     <input type="checkbox" name ="when_alcohol_pregnancy" value="3">&nbsp;3rd&nbsp;&nbsp;
+                   <% } if (pregbirth.whenAlcoholPregnancy == "UNKNOWN") { %>
+                     <input type="checkbox" name ="when_alcohol_pregnancy" value="UNKNOWN" checked>&nbsp;Unknown<br><br>
+                   <% } else { %>
+                     <input type="checkbox" name ="when_alcohol_pregnancy" value="UNKNOWN">&nbsp;Unknown<br><br>
+                   <% } %></td>
+      </tr>
+      <tr>
+          <td> ...use any substances during the pregnancy? </td>
+          <td>  <% if (pregbirth.usedDrugsPregnancy == "tobacco") { %>
+                  <input type="checkbox" name ="used_drugs_pregnancy" value="tobacco" checked>&nbsp;Tobacco (vaping, chewing, etc.)&nbsp;&nbsp;
+                <% } else { %>
+                  <input type="checkbox" name ="used_drugs_pregnancy" value="tobacco">&nbsp;Tobacco (vaping, chewing, etc.)&nbsp;&nbsp;
+                <% } if (pregbirth.usedDrugsPregnancy == "marijuana") { %>
+                  <input type="checkbox" name ="used_drugs_pregnancy" value="marijuana" checked>&nbsp;Marijuana/cannabis&nbsp;&nbsp;
+                <% } else { %>
+                  <input type="checkbox" name ="used_drugs_pregnancy" value="marijuana">&nbsp;Marijuana/cannabis&nbsp;&nbsp;
+                <% } if (pregbirth.usedDrugsPregnancy == "cocaine") { %>
+                  <input type="checkbox" name ="used_drugs_pregnancy" value="cocaine" checked>&nbsp;Cocaine&nbsp;&nbsp;
+                <% } else { %>
+                  <input type="checkbox" name ="used_drugs_pregnancy" value="cocaine">&nbsp;Cocaine&nbsp;&nbsp;
+                <% } if (pregbirth.usedDrugsPregnancy == "heroin") { %>
+                  <input type="checkbox" name ="used_drugs_pregnancy" value="heroin" checked>&nbsp;Heroin&nbsp;&nbsp;
+                <% } else { %>
+                  <input type="checkbox" name ="used_drugs_pregnancy" value="heroin">&nbsp;Heroin&nbsp;&nbsp;
+                <% } if (pregbirth.usedDrugsPregnancy == "painkillers") { %>
+                  <input type="checkbox" name ="used_drugs_pregnancy" value="painkillers" checked>&nbsp;Painkillers&nbsp;&nbsp;
+                <% } else { %>
+                  <input type="checkbox" name ="used_drugs_pregnancy" value="painkillers">&nbsp;Painkillers&nbsp;&nbsp;
+                <% } if (pregbirth.usedDrugsPregnancy == "meth") { %>
+                  <input type="checkbox" name ="used_drugs_pregnancy" value="meth" checked>&nbsp;Methamphetamine&nbsp;&nbsp;
+                <% } else { %>
+                  <input type="checkbox" name ="used_drugs_pregnancy" value="meth">&nbsp;Methamphetamine&nbsp;&nbsp;
+                <% } if (pregbirth.usedDrugsPregnancy == "other") { %>
+                  <input type="checkbox" name ="used_drugs_pregnancy" value="other">&nbsp;Other:&nbsp;<input type="text" name="used_drugs_pregnancy_other" value="<%= pregbirth.usedDrugsPregnancyOther %>"><br><br>
+                <% } else { %>
+                  <input type="checkbox" name ="used_drugs_pregnancy" value="other">&nbsp;Other:&nbsp;<input type="text" name="used_drugs_pregnancy_other"><br><br>
+                <% } %>
+               During which trimester(s)?&nbsp;
+                   <% if (pregbirth.whenDrugsPregnancy == "1") { %>
+                     <input type="checkbox" name ="when_drugs_pregnancy" value="1" checked>&nbsp;1st&nbsp;&nbsp;
+                   <% } else { %>
+                     <input type="checkbox" name ="when_drugs_pregnancy" value="1">&nbsp;1st&nbsp;&nbsp;
+                   <% } if (pregbirth.whenDrugsPregnancy == "2") { %>
+                     <input type="checkbox" name ="when_drugs_pregnancy" value="2" checked>&nbsp;2nd&nbsp;&nbsp;
+                   <% } else { %>
+                     <input type="checkbox" name ="when_drugs_pregnancy" value="2">&nbsp;2nd&nbsp;&nbsp;
+                   <% } if (pregbirth.whenDrugsPregnancy == "3") { %>
+                     <input type="checkbox" name ="when_drugs_pregnancy" value="3" checked>&nbsp;3rd&nbsp;&nbsp;
+                   <% } else { %>
+                     <input type="checkbox" name ="when_drugs_pregnancy" value="3">&nbsp;3rd&nbsp;&nbsp;
+                   <% } if (pregbirth.whenDrugsPregnancy == "UNKNOWN") { %>
+                     <input type="checkbox" name ="when_drugs_pregnancy" value="UNKNOWN" checked>&nbsp;Unknown<br><br>
+                   <% } else { %>
+                     <input type="checkbox" name ="when_drugs_pregnancy" value="UNKNOWN">&nbsp;Unknown<br><br>
+                   <% } %></td>
+      </tr>
+      <tr>
+          <td> ...have any other complications during the pregnancy? </td>
+          <td> <textarea name="other_complications_pregnancy" rows="2" cols="40"><%= pregbirth.otherComplicationsPregnancy %></textarea></td>
+      </tr>
+    </tbody>
+  </table>
+  <hr>
+
+  <h3> Birth History </h3>
+  <div class="row">
+    <div class="col"> What was the age of the birth mother when this child was born? </div>
+    <div class="col"> <input type="number" name="mother_age_birth" value="<%= pregbirth.motherAgeBirth %>"></div>
+  </div>
+  <div class="row">
+    <div class="col"> What was the age of the birth father when this child was born? </div>
+    <div class="col"> <input type="number" name="father_age_birth" value="<%= pregbirth.fatherAgeBirth %>"></div>
+  </div>
+  <div class="row">
+    <div class="col"> What was the gestational age of the child when born (i.e. how many weeks)? </div>
+    <div class="col"> <input type="text" name="gestational_age" value="<%= pregbirth.gestationalAge %>"</div>
+  </div>
+  <div class="row">
+    <div class="col"> What was the birth weight of the child? </div>
+    <div class="col"> <input type="text" name="birth_weight" value="<%= pregbirth.birthWeight %>"></div>
+  </div>
+
+  <table class="table table-bordered table-striped"
+    <tbody>
+      <tr>
+          <td> Was this child... </td>
+          <td>  <% if (pregbirth.pregnancyNumbers == "singleton") { %>
+            <input type="checkbox" name ="pregnancy_numbers" value="singleton" checked>&nbsp;A singleton&nbsp;&nbsp;
+                <% } else { %>
+                  <input type="radio" name ="pregnancy_numbers" value="singleton">&nbsp;A singleton&nbsp;&nbsp;
+                <% } if (pregbirth.pregnancyNumbers == "twin") { %>
+                  <input type="radio" name ="pregnancy_numbers" value="twin" checked>&nbsp;One of twins&nbsp;&nbsp;
+                <% } else { %>
+                  <input type="radio" name ="pregnancy_numbers" value="twin">&nbsp;One of twins&nbsp;&nbsp;
+                <% } if (pregbirth.pregnancyNumbers == "triplet") { %>
+                  <input type="radio" name ="pregnancy_numbers" value="triplet" checked>&nbsp;One of triplets&nbsp;&nbsp;
+                <% } else { %>
+                  <input type="radio" name ="pregnancy_numbers" value="triplet">&nbsp;One of triplets&nbsp;&nbsp;
+                <% } if (pregbirth.pregnancyNumbers == "other") { %>
+                  <input type="radio" name ="pregnancy_numbers" value="other" checked>&nbsp;Other multiple
+                <% } else { %>
+                  <input type="radio" name ="pregnancy_numbers" value="other">&nbsp;Other multiple
+                <% } %></td>
+      </tr>
+      <tr>
+          <td> Was this child born by... </td>
+          <td>  <% if (pregbirth.deliveryMethod == "vaginal") { %>
+                  <input type="radio" name ="delivery_method" value="vaginal" checked>&nbsp;Vaginal birth&nbsp;&nbsp;
+                <% } else { %>
+                  <input type="radio" name ="delivery_method" value="vaginal">&nbsp;Vaginal birth&nbsp;&nbsp;
+                <% } if (pregbirth.deliveryMethod == "scheduled_caesarean") { %>
+                  <input type="radio" name ="delivery_method" value="scheduled_caesarean" checked>&nbsp;Scheduled Caesarean section&nbsp;&nbsp;
+                <% } else { %>
+                  <input type="radio" name ="delivery_method" value="scheduled_caesarean">&nbsp;Scheduled Caesarean section&nbsp;&nbsp;
+                <% } if (pregbirth.deliveryMethod == "unplanned_caesarean") { %>
+                  <input type="radio" name ="delivery_method" value="unplanned_caesarean" checked>&nbsp;Unplanned Caesarean section&nbsp;&nbsp;
+                <% } else { %>
+                  <input type="radio" name ="delivery_method" value="unplanned_caesarean">&nbsp;Unplanned Caesarean section&nbsp;&nbsp;
+                <% } if (pregbirth.deliveryMethod == "vaginal_after_caesarean") { %>
+                  <input type="radio" name ="delivery_method" value="vaginal_after_caesarean" checked>&nbsp;Vaginal birth after previous C-section&nbsp;&nbsp;
+                <% } else { %>
+                  <input type="radio" name ="delivery_method" value="vaginal_after_caesarean">&nbsp;Vaginal birth after previous C-section&nbsp;&nbsp;
+                <% } if (pregbirth.deliveryMethod == "scheduled_induction") { %>
+                  <input type="radio" name ="delivery_method" value="scheduled_induction" checked>&nbsp;Scheduled induction&nbsp;&nbsp;
+                <% } else { %>
+                  <input type="radio" name ="delivery_method" value="scheduled_induction">&nbsp;Scheduled induction&nbsp;&nbsp;
+                <% } if (pregbirth.deliveryMethod == "forcep_vaginal") { %>
+                  <input type="radio" name ="delivery_method" value="forcep_vaginal" checked>&nbsp;Forecep-assisted vaginal delivery&nbsp;&nbsp;
+                <% } else { %>
+                  <input type="radio" name ="delivery_method" value="forcep_vaginal">&nbsp;Forecep-assisted vaginal delivery&nbsp;&nbsp;
+                <% } if (pregbirth.deliveryMethod == "vacuum_vaginal") { %>
+                  <input type="radio" name ="delivery_method" value="vacuum_vaginal" checked>&nbsp;Vacuum-assisted vaginal delivery&nbsp;&nbsp;
+                <% } else { %>
+                  <input type="radio" name ="delivery_method" value="vacuum_vaginal">&nbsp;Vacuum-assisted vaginal delivery&nbsp;&nbsp;
+                <% } if (pregbirth.deliveryMethod == "UNKNOWN") { %>
+                  <input type="radio" name ="delivery_method" value="UNKNOWN" checked>&nbsp;Unknown delivery method&nbsp;&nbsp;
+                <% } else { %>
+                  <input type="radio" name ="delivery_method" value="UNKNOWN">&nbsp;Unknown delivery method&nbsp;&nbsp;
+                <% } %> </td>
+      </tr>
+      <tr>
+          <td> Were there any complications during labor/delivery? </td>
+          <td> <textarea name="other_complications_delivery" rows="2" cols="40"></textarea><%= pregbirth.otherComplicationsDelivery %></td>
+      </tr>
+      <tr>
+          <td> Was this child admitted to the Special Care Nursery or Neonatal Intensive Care Unit (NICU)? </td>
+          <td> <% if (pregbirth.admittedToNICU == "TRUE") { %>
+                  <input type="radio" name ="admitted_to_nicu" value="TRUE" checked>&nbsp;YES&nbsp;&nbsp;
+                <% } else { %>
+                  <input type="radio" name ="admitted_to_nicu" value="TRUE">&nbsp;YES&nbsp;&nbsp;
+                <% } if (pregbirth.admittedToNICU == "FALSE") { %>
+                  <input type="radio" name ="admitted_to_nicu" value="FALSE" checked>&nbsp;NO&nbsp;&nbsp;
+                <% } else { %>
+                  <input type="radio" name ="admitted_to_nicu" value="FALSE">&nbsp;NO&nbsp;&nbsp;
+                <% } if (pregbirth.admittedToNICU == "UNKNOWN") { %>
+                  <input type="radio" name ="admitted_to_nicu" value="UNKNOWN" checked>&nbsp;UNKNOWN<br><br>
+                <% } else { %>
+                  <input type="radio" name ="admitted_to_nicu" value="UNKNOWN">&nbsp;UNKNOWN<br><br>
+                <% } %>
+               If yes, how long was this child hospitalized (if known)?&nbsp;<input type="text" name="time_in_nicu" value="<%= pregbirth.timeInNICU %>"></td>
+      </tr>
+      <tr>
+          <td> Did this child have any problems within the first few days to weeks of life? </td>
+          <td> <textarea name="complications_neonatal" rows="2" col="40"></textarea><%= pregbirth.complicationsNeonatal %></td>
+      </tr>
+      <tr>
+          <td> When discharged from the hospital, who did your child go home with? </td>
+          <td>  <% if (pregbirth.firstCaregiver == "bio_mother") { %>
+                  <input type="checkbox" name ="first_caregiver" value="bio_mother" checked>&nbsp;Biological mother&nbsp;&nbsp;
+                <% } else { %>
+                  <input type="checkbox" name ="first_caregiver" value="bio_mother">&nbsp;Biological mother&nbsp;&nbsp;
+                <% } if (pregbirth.firstCaregiver == "bio_father") { %>
+                  <input type="checkbox" name ="first_caregiver" value="bio_father" checked>&nbsp;Biological father&nbsp;&nbsp;
+                <% } else { %>
+                  <input type="checkbox" name ="first_caregiver" value="bio_father">&nbsp;Biological father&nbsp;&nbsp;
+                <% } if (pregbirth.firstCaregiver == "bio_parents") { %>
+                  <input type="checkbox" name ="first_caregiver" value="bio_parents" checked>&nbsp;Biological parents&nbsp;&nbsp;
+                <% } else { %>
+                  <input type="checkbox" name ="first_caregiver" value="bio_parents">&nbsp;Biological parents&nbsp;&nbsp;
+                <% } if (pregbirth.firstCaregiver == "adoptive_parents") { %>
+                  <input type="checkbox" name ="first_caregiver" value="adoptive_parents" checked>&nbsp;Adoptive parents&nbsp;&nbsp;
+                <% } else { %>
+                  <input type="checkbox" name ="first_caregiver" value="adoptive_parents">&nbsp;Adoptive parents&nbsp;&nbsp;
+                <% } if (pregbirth.firstCaregiver == "grandparent") { %>
+                  <input type="checkbox" name ="first_caregiver" value="grandparent" checked>&nbsp;Grandparent(s)&nbsp;&nbsp;
+                <% } else { %>
+                  <input type="checkbox" name ="first_caregiver" value="grandparent">&nbsp;Grandparent(s)&nbsp;&nbsp;
+                <% } if (pregbirth.firstCaregiver == "other_relative") { %>
+                  <input type="checkbox" name ="first_caregiver" value="other_relative" checked>&nbsp;Other relative(s)&nbsp;&nbsp;
+                <% } else { %>
+                  <input type="checkbox" name ="first_caregiver" value="other_relative">&nbsp;Other relative(s)&nbsp;&nbsp;
+                <% } if (pregbirth.firstCaregiver == "foster_parent") { %>
+                  <input type="checkbox" name ="first_caregiver" value="foster_parent" checked>&nbsp;Foster parent(s)&nbsp;&nbsp;
+                <% } else { %>
+                  <input type="checkbox" name ="first_caregiver" value="foster_parent">&nbsp;Foster parent(s)&nbsp;&nbsp;
+                <% } if (pregbirth.firstCaregiver == "other") { %>
+                  <input type="checkbox" name ="first_caregiver" value="other" checked>&nbsp;Other&nbsp;&nbsp;
+                <% } else { %>
+                  <input type="checkbox" name ="first_caregiver" value="other">&nbsp;Other&nbsp;&nbsp;
+                <% } if (pregbirth.firstCaregiver == "UNKNOWN") { %>
+                  <input type="checkbox" name ="first_caregiver" value="UNKNOWN" checked>&nbsp;Unknown<br><br>
+                <% } else { %>
+                  <input type="checkbox" name ="first_caregiver" value="UNKNOWN">&nbsp;Unknown<br><br>
+                <% } %>
+                  If other or other relative, please elaborate (if known).&nbsp;<input type="text" name="first_caregiver_other" value="<%= pregbirth.firstCaregiverOther %>"> </td>
+      </tr>
+      <tr>
+          <td> Did this child have any feeding problems as a newborn or infant? </td>
+          <td>  <% if (pregbirth.hadFeedingProblems == "TRUE") { %>
+                  <input type="radio" name ="had_feeding_problems" value="TRUE" checked>&nbsp;YES&nbsp;&nbsp;
+                <% } else { %>
+                  <input type="radio" name ="had_feeding_problems" value="TRUE">&nbsp;YES&nbsp;&nbsp;
+                <% } if (pregbirth.hadFeedingProblems == "FALSE") { %>
+                  <input type="radio" name ="had_feeding_problems" value="FALSE" checked>&nbsp;NO&nbsp;&nbsp;
+                <% } else { %>
+                  <input type="radio" name ="had_feeding_problems" value="FALSE">&nbsp;NO&nbsp;&nbsp;
+                <% } if (pregbirth.hadFeedingProblems == "UNKNOWN") { %>
+                  <input type="radio" name ="had_feeding_problems" value="UNKNOWN" checked>&nbsp;UNKNOWN<br><br>
+                <% } else { %>
+                  <input type="radio" name ="had_feeding_problems" value="UNKNOWN">&nbsp;UNKNOWN<br><br>
+                <% } %>
+                  If yes, please elaborate (if known).&nbsp;<input type="text" name="feeding_problems" value="<%= pregbirth.feedingProblems %>"></td>
+      </tr>
+    </tbody>
+  </table>
+  <input type="hidden" id="patientID" value="<%= patientId %>">
+  <input type="submit" value="Submit">
+</form>
+<%- include('bootfooter') -%>
