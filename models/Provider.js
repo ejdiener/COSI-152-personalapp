@@ -8,6 +8,7 @@ var ProviderSchema = Schema( {
   userId: ObjectId,
   providerName: String,
   providerPronouns: String,
+  providerRole: String,
   providerEducation: String,
   providerOrganization: String,
   providerAddress: String,
