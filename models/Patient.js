@@ -10,14 +10,15 @@ var PatientSchema = Schema( {
   patientPronouns: String,
   patientAddress: String,
   patientPhone: String,
+  patientEmail: String,
   patientBio: String,
   CurrentProvidersIds: [{type:ObjectId, ref:"Provider"}],                 // SCHEMA?? of current providers
 
-  PregBirthHistory: ObjectId,                 // SCHEMA: Stores results of PregBirthHistory form
+  pregBirthHistory: ObjectId,                 // SCHEMA: Stores results of PregBirthHistory form
 //  DevelopmentHistory: ObjectId,               // SCHEMA: Stores results of DevelopmentHistory form
 //  HealthHistory: ObjectId,                    // SCHEMA: Stores results of HeathHistory form
 //  SocialHistory: ObjectId,                    // SCHEMA: Stores results of SocialHistory form
-  FamilyMedHistory: ObjectId,                 // SCHEMA: Stores results of FamilyMedHistory form
+  familyMedHistory: ObjectId,                 // SCHEMA: Stores results of FamilyMedHistory form
 //  EducationHistory: ObjectId,                 // SCHEMA: Stores results of EducationHistory form
 //  ProvidersHistory: ObjectId,                 // SCHEMA: Stores results of ProvidersHistory form
 
