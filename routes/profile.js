@@ -47,6 +47,7 @@ router.post('/form',
         const provider = new Provider(
           { providerName: req.body.providerName,
             providerPronouns: req.body.providerPronouns,
+            providerRole: req.body.providerRole,
             providerEducation: req.body.providerEducation,
             providerOrganization: req.body.providerOrganization,
             providerAddress: req.body.providerAddress,
@@ -63,28 +64,24 @@ router.post('/form',
   router.post('/edit',
       isLoggedIn,
       async (req,res,next) => {
-          const provider = Provider.findOneAndUpdate({userID:req.user._id},
-            {$set: {  providerName: req.body.providerName,
-                      providerPronouns: req.body.providerPronouns,
-                      providerEducation: req.body.providerEducation,
-                      providerOrganization: req.body.providerOrganization,
-                      providerAddress: req.body.providerAddress,
-                      providerPhone: req.body.providerPhone,
-                      providerEmail: req.body.providerEmail,
-                      providerBio: req.body.providerBio,
-                      userId: req.user._id
-            }}, {new: true},
-                function (err, docs) {
-                  if (err){
-                    console.log(err)
-                  }
-                  else {
-                    console.log("Original Doc : ",docs);
-                  }
-            });
-            console.log(provider)
+        try {
+          const provider = await Provider.findOne({userId:req.user._id})
+          provider.providerName = req.body.providerName
+          provider.providerPronouns = req.body.providerPronouns
+          provider.providerRole = req.body.providerRole,
+          provider.providerEducation = req.body.providerEducation
+          provider.providerOrganization = req.body.providerOrganization
+          provider.providerAddress = req.body.providerAddress
+          provider.providerPhone = req.body.providerPhone
+          provider.providerEmail = req.body.providerEmail
+          provider.providerBio = req.body.providerBio
+          await provider.save()
+          console.log(provider)
           //res.render("todoVerification")
           res.redirect('/profile/' + req.user._id)
+        } catch (e) {
+          next(e)
+        }
       });
 
 module.exports = router;
