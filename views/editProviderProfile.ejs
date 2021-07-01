@@ -5,7 +5,7 @@
   <h2>Provider Information</h2>
 </div>
 
-<form method="post" action="/profile">
+<form method="post" action="/profile/edit">
   Please enter the following information:
   <div class="row">
     <div class="col"> Name of provider: </div>
@@ -15,42 +15,126 @@
   <div class="row">
     <div class="col"> Provider's pronouns: </div>
     <div class="col"> <select name="providerPronouns">
-                        <option value="he"> He/him/his </option>
-                        <option value="she"> She/her/hers </option>
-                        <option value="they"> They/them/theirs </option>
-                        <option value="xe"> Xe/xem/xirs </option>
+                          <% if (provider.providerPronouns == "he") { %>
+                            <option value="he" selected> He/him/his </option>
+                          <% } else { %>
+                            <option value="he"> He/him/his </option>
+                          <% } if (provider.providerPronouns == "she") { %>
+                            <option value="she" selected> She/her/hers </option>
+                          <% } else { %>
+                            <option value="she"> She/her/hers </option>
+                          <% } if (provider.providerPronouns == "they") { %>
+                            <option value="they" selected> They/them/theirs </option>
+                          <% } else { %>
+                            <option value="they"> They/them/theirs </option>
+                          <% } if (provider.providerPronouns == "xe") { %>
+                            <option value="xe" selected> Xe/xem/xirs </option>
+                          <% } else { %>
+                            <option value="xe"> Xe/xem/xirs </option>
+                          <% } %>
                       </select>
     </div>
   </div>
   <div class="row">
     <div class="col"> Role in care of the patient: </div>
-    <div class="col"> <input type="Radio" name ="providerRole" value='guardian'>&nbsp;Parent/Guardian<br>
-                      <input type="Radio" name ="providerRole" value='primary_care_physician'>&nbsp;Primary Care Physician/Pediatrician<br>
-                      <input type="Radio" name ="providerRole" value='developmental_behavioral_pediatrician'>&nbsp;Developmental-Behavioral Pediatrician<br>
-                      <input type="Radio" name ="providerRole" value='teacher'>&nbsp;Teacher<br>
-                      <input type="Radio" name ="providerRole" value='classroom_aide'>&nbsp;Classroom Aide<br>
-                      <input type="Radio" name ="providerRole" value='psychologist'>&nbsp;Psychologist<br>
-                      <input type="Radio" name ="providerRole" value='speech_language_therapist'>&nbsp;Speech-Language Therapist<br>
-                      <input type="Radio" name ="providerRole" value='occupational_therapist'>&nbsp;Occupational Therapist<br>
-                      <input type="Radio" name ="providerRole" value='physical_therapist'>&nbsp;Physical Therapist<br>
-                      <input type="Radio" name ="providerRole" value='developmental_specialist'>&nbsp;Developmental Specialist<br>
-                      <input type="Radio" name ="providerRole" value='behavioral_therapist'>&nbsp;Behavioral Therapist<br>
-                      <input type="Radio" name ="providerRole" value='cognitive_behavioral_therapist'>&nbsp;Cognitive-Behavioral Therapist<br>
-                      <input type="Radio" name ="providerRole" value='social_worker'>&nbsp;Social Worker<br>
-                      <input type="Radio" name ="providerRole" value='care_coordinator'>&nbsp;Care Coordinator<br>
-                      <input type="Radio" name ="providerRole" value='other'>&nbsp;Other:&nbsp;<input type="text" name ="providerRole_other">
+    <div class="col"> <% if (provider.providerRole == "guardian") { %>
+                          <input type="Radio" name ="providerRole" value='guardian' checked>&nbsp;Parent/Guardian<br>
+                      <% } else { %>
+                          <input type="Radio" name ="providerRole" value='guardian'>&nbsp;Parent/Guardian<br>
+                      <% } if (provider.providerRole == "primary_care_physician") { %>
+                          <input type="Radio" name ="providerRole" value='primary_care_physician' checked>&nbsp;Primary Care Physician/Pediatrician<br>
+                      <% } else { %>
+                          <input type="Radio" name ="providerRole" value='primary_care_physician'>&nbsp;Primary Care Physician/Pediatrician<br>
+                      <% } if (provider.providerRole == "developmental_behavioral_pediatrician") { %>
+                          <input type="Radio" name ="providerRole" value='developmental_behavioral_pediatrician' checked>&nbsp;Developmental-Behavioral Pediatrician<br>
+                      <% } else { %>
+                          <input type="Radio" name ="providerRole" value='developmental_behavioral_pediatrician'>&nbsp;Developmental-Behavioral Pediatrician<br>
+                      <% } if (provider.providerRole == "teacher") { %>
+                          <input type="Radio" name ="providerRole" value='teacher' checked>&nbsp;Teacher<br>
+                      <% } else { %>
+                          <input type="Radio" name ="providerRole" value='teacher'>&nbsp;Teacher<br>
+                      <% } if (provider.providerRole == "classroom_aide") { %>
+                          <input type="Radio" name ="providerRole" value='classroom_aide' checked>&nbsp;Classroom Aide<br>
+                      <% } else { %>
+                          <input type="Radio" name ="providerRole" value='classroom_aide'>&nbsp;Classroom Aide<br>
+                      <% } if (provider.providerRole == "psychologist") { %>
+                          <input type="Radio" name ="providerRole" value='psychologist' checked>&nbsp;Psychologist<br>
+                      <% } else { %>
+                          <input type="Radio" name ="providerRole" value='psychologist'>&nbsp;Psychologist<br>
+                      <% } if (provider.providerRole == "speech_language_therapist") { %>
+                          <input type="Radio" name ="providerRole" value='speech_language_therapist' checked>&nbsp;Speech-Language Therapist<br>
+                      <% } else { %>
+                          <input type="Radio" name ="providerRole" value='speech_language_therapist'>&nbsp;Speech-Language Therapist<br>
+                      <% } if (provider.providerRole == "occupational_therapist") { %>
+                          <input type="Radio" name ="providerRole" value='occupational_therapist' checked>&nbsp;Occupational Therapist<br>
+                      <% } else { %>
+                          <input type="Radio" name ="providerRole" value='occupational_therapist'>&nbsp;Occupational Therapist<br>
+                      <% } if (provider.providerRole == "physical_therapist") { %>
+                          <input type="Radio" name ="providerRole" value='physical_therapist' checked>&nbsp;Physical Therapist<br>
+                      <% } else { %>
+                          <input type="Radio" name ="providerRole" value='physical_therapist'>&nbsp;Physical Therapist<br>
+                      <% } if (provider.providerRole == "developmental_specialist") { %>
+                          <input type="Radio" name ="providerRole" value='developmental_specialist' checked>&nbsp;Developmental Specialist<br>
+                      <% } else { %>
+                          <input type="Radio" name ="providerRole" value='developmental_specialist'>&nbsp;Developmental Specialist<br>
+                      <% } if (provider.providerRole == "behavioral_therapist") { %>
+                          <input type="Radio" name ="providerRole" value='behavioral_therapist' checked>&nbsp;Behavioral Therapist<br>
+                      <% } else { %>
+                          <input type="Radio" name ="providerRole" value='behavioral_therapist'>&nbsp;Behavioral Therapist<br>
+                      <% } if (provider.providerRole == "cognitive_behavioral_therapist") { %>
+                          <input type="Radio" name ="providerRole" value='cognitive_behavioral_therapist' checked>&nbsp;Cognitive-Behavioral Therapist<br>
+                      <% } else { %>
+                          <input type="Radio" name ="providerRole" value='cognitive_behavioral_therapist'>&nbsp;Cognitive-Behavioral Therapist<br>
+                      <% } if (provider.providerRole == "social_worker") { %>
+                          <input type="Radio" name ="providerRole" value='social_worker' checked>&nbsp;Social Worker<br>
+                      <% } else { %>
+                          <input type="Radio" name ="providerRole" value='social_worker'>&nbsp;Social Worker<br>
+                      <% } if (provider.providerRole == "guardian") { %>
+                          <input type="Radio" name ="providerRole" value='care_coordinator' checked>&nbsp;Care Coordinator<br>
+                      <% } else { %>
+                          <input type="Radio" name ="providerRole" value='care_coordinator'>&nbsp;Care Coordinator<br>
+                      <% } if (provider.providerRole == "guardian") { %>
+                          <input type="Radio" name ="providerRole" value='other' checked>&nbsp;Other:&nbsp;<input type="text" name ="providerRole_other" value="<%= provider.providerRole_other %>">
+                      <% } else { %>
+                          <input type="Radio" name ="providerRole" value='other'>&nbsp;Other:&nbsp;<input type="text" name ="providerRole_other">
+                      <% } %>
     </div>
   </div>
   <div class="row">
     <div class="col"> Title that should follow your name: </div>
-    <div class="col"> <input type="Checkbox" name ="providerEducation" value ="md">&nbsp;MD&nbsp;&nbsp;
-                      <input type="Checkbox" name ="providerEducation" value ="phd">&nbsp;MD&nbsp;&nbsp;
-                      <input type="Checkbox" name ="providerEducation" value ="ms">&nbsp;MS&nbsp;&nbsp;
-                      <input type="Checkbox" name ="providerEducation" value ="ma">&nbsp;MA&nbsp;&nbsp;
-                      <input type="Checkbox" name ="providerEducation" value ="ccc_slp">&nbsp;CCC-SLP&nbsp;&nbsp;
-                      <input type="Checkbox" name ="providerEducation" value ="otr">&nbsp;OTR&nbsp;&nbsp;
-                      <input type="Checkbox" name ="providerEducation" value ="pt">&nbsp;PT&nbsp;&nbsp;
-                      <input type="Checkbox" name ="providerEducation" value ="lcsw">&nbsp;LCSW&nbsp;&nbsp;
+    <div class="col"> <% if (provider.providerRole == "md") { %>
+                          <input type="Checkbox" name ="providerEducation" value ="md" checked>&nbsp;MD&nbsp;&nbsp;
+                      <% } else { %>
+                          <input type="Checkbox" name ="providerEducation" value ="md">&nbsp;MD&nbsp;&nbsp;
+                      <% } if (provider.providerRole == "phd") { %>
+                          <input type="Checkbox" name ="providerEducation" value ="phd" checked>&nbsp;PhD&nbsp;&nbsp;
+                      <% } else { %>
+                          <input type="Checkbox" name ="providerEducation" value ="phd">&nbsp;PhD&nbsp;&nbsp;
+                      <% } if (provider.providerRole == "ms") { %>
+                          <input type="Checkbox" name ="providerEducation" value ="ms" checked>&nbsp;MS&nbsp;&nbsp;
+                      <% } else { %>
+                          <input type="Checkbox" name ="providerEducation" value ="ms">&nbsp;MS&nbsp;&nbsp;
+                      <% } if (provider.providerRole == "ma") { %>
+                          <input type="Checkbox" name ="providerEducation" value ="ma" checked>&nbsp;MA&nbsp;&nbsp;
+                      <% } else { %>
+                          <input type="Checkbox" name ="providerEducation" value ="ma">&nbsp;MA&nbsp;&nbsp;
+                      <% } if (provider.providerRole == "ccc_slp") { %>
+                          <input type="Checkbox" name ="providerEducation" value ="ccc_slp" checked>&nbsp;CCC-SLP&nbsp;&nbsp;
+                      <% } else { %>
+                          <input type="Checkbox" name ="providerEducation" value ="ccc_slp">&nbsp;CCC-SLP&nbsp;&nbsp;
+                      <% } if (provider.providerRole == "otr") { %>
+                          <input type="Checkbox" name ="providerEducation" value ="otr" checked>&nbsp;OTR&nbsp;&nbsp;
+                      <% } else { %>
+                          <input type="Checkbox" name ="providerEducation" value ="otr">&nbsp;OTR&nbsp;&nbsp;
+                      <% } if (provider.providerRole == "pt") { %>
+                          <input type="Checkbox" name ="providerEducation" value ="pt" checked>&nbsp;PT&nbsp;&nbsp;
+                      <% } else { %>
+                          <input type="Checkbox" name ="providerEducation" value ="pt">&nbsp;PT&nbsp;&nbsp;
+                      <% } if (provider.providerRole == "lcsw") { %>
+                          <input type="Checkbox" name ="providerEducation" value ="lcsw" checked>&nbsp;LCSW&nbsp;&nbsp;
+                      <% } else { %>
+                          <input type="Checkbox" name ="providerEducation" value ="lcsw">&nbsp;LCSW&nbsp;&nbsp;
+                      <% } %>
                     </div>
   </div>
   <div class="row">
@@ -84,7 +168,7 @@
     </div>
   </div> -->
   <hr>
-
+  <input type="hidden" id="providerID" value="<%= provider._id %>">
   <input type="submit" name="Submit">
 </form>
 
