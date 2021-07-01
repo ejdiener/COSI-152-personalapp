@@ -5,17 +5,17 @@
 <h2>Pregnancy and Birth History</h2>
 </div>
 
-<form method="post" action="/history/pregbirth/form">
+<form method="post" action="/patients/history/pregbirth/edit">
   Is this child adopted?<br>
     <% if (pregbirth.adoptionStatus == "FALSE") { %>
       <input type="radio" name="adoption_status" value="FALSE" checked>&nbsp;NO&nbsp;&nbsp;
     <% } else { %>
       <input type="radio" name="adoption_status" value="FALSE">&nbsp;NO&nbsp;&nbsp;
     <% } if (pregbirth.adoptionStatus == "TRUE") { %>
-      <input type="radio" name="adoption_status" value="TRUE" checked>&nbsp;YES from <input type="text" name="country"
-             placeholder="country of origin" value="pregbirth.countryOfOrigin">
+      <input type="radio" name="adoption_status" value="TRUE" checked>&nbsp;YES from <input type="text" name="country_of_origin"
+             placeholder="country of origin" value="<%= pregbirth.countryOfOrigin %>">
     <% } else { %>
-      <input type="radio" name="adoption_status" value="TRUE">&nbsp;YES from <input type="text" name="country"
+      <input type="radio" name="adoption_status" value="TRUE">&nbsp;YES from <input type="text" name="country_of_origin"
              placeholder="country of origin">
     <% } %>
   <hr>
@@ -551,7 +551,8 @@
       </tr>
     </tbody>
   </table>
-  <input type="hidden" id="patientID" value="<%= patientId %>">
+  <% console.log("3 " + patientId) %>
+  <input type="hidden" name="patientId" value="<%= patientId %>">
   <input type="submit" value="Submit">
 </form>
 <%- include('bootfooter') -%>
