@@ -5,7 +5,7 @@
 <h2>Pregnancy and Birth History</h2>
 </div>
 
-<form method="post" action="/history/pregbirth">
+<form method="post" action="/history/pregbirth/form">
   Is this child adopted?<br>
     <input type="radio" name="adoption_status" value="FALSE">&nbsp;NO&nbsp;&nbsp;
     <input type="radio" name="adoption_status" value="TRUE">&nbsp;YES from <input type="text" name="country"
@@ -130,7 +130,7 @@
                If yes, how many drinks?<br>
                   <input type="radio" name="alcohol_per_day_pregnancy" value="1_per_week"> &nbsp;1 drink or less per week&nbsp;&nbsp;
                   <input type="radio" name="alcohol_per_day_pregnancy" value="1_per_day"> &nbsp;1 drink or less per day&nbsp;&nbsp;
-                  <input type="radio" name="alcohol_per_day_pregnancy" value="2_per_day"> &nbsp;2 drinks or more per day&nbsp;&nbsp;
+                  <input type="radio" name="alcohol_per_day_pregnancy" value="2_plus_per_day"> &nbsp;2 drinks or more per day&nbsp;&nbsp;
                   <input type="radio" name="alcohol_per_day_pregnancy" value="UNKNOWN"> Amount unknown<br><br>
                During which trimester(s)?<br>
                   <input type="checkbox" name="when_alcohol_pregnancy" value="1">&nbsp;1st&nbsp;&nbsp;
@@ -146,7 +146,7 @@
                <input type="checkbox" name ="used_drugs_pregnancy" value="heroin">&nbsp;Heroin&nbsp;&nbsp;
                <input type="checkbox" name ="used_drugs_pregnancy" value="painkillers">&nbsp;Painkillers&nbsp;&nbsp;
                <input type="checkbox" name ="used_drugs_pregnancy" value="cocaine">&nbsp;Methamphetamine&nbsp;&nbsp;
-               <input type="checkbox" name ="used_drugs_pregnancy" value="others">&nbsp;Other:&nbsp;
+               <input type="checkbox" name ="used_drugs_pregnancy" value="other">&nbsp;Other:&nbsp;
                   <input type="text" name="used_drugs_pregnancy_other"><br><br>
                During which trimester(s)?&nbsp;
                   <input type="checkbox" name="when_drugs_pregnancy" value="1">&nbsp;1st&nbsp;&nbsp;
@@ -177,7 +177,7 @@
   </div>
   <div class="row">
     <div class="col"> What was the birth weight of the child? </div>
-    <div class="col"> <input type="text" name ="gestational_age"></div>
+    <div class="col"> <input type="text" name ="birth_weight"></div>
   </div>
 
   <table class="table table-bordered table-striped"
@@ -192,12 +192,13 @@
       <tr>
           <td> Was this child born by... </td>
           <td> <input type="radio" name ="delivery_method" value="vaginal">&nbsp;Vaginal birth&nbsp;&nbsp;
-               <input type="radio" name ="delivery_method" value="caesarean">&nbsp;Scheduled Caesarean section&nbsp;&nbsp;
-               <input type="radio" name ="delivery_method" value="caesarean">&nbsp;Unplanned Caesarean section&nbsp;&nbsp;
-               <input type="radio" name ="delivery_method" value="caesarean">&nbsp;Vaginal birth after previous C-section&nbsp;&nbsp;
-               <input type="radio" name ="delivery_method" value="caesarean">&nbsp;Scheduled induction&nbsp;&nbsp;
-               <input type="radio" name ="delivery_method" value="caesarean">&nbsp;Forecep-assisted vaginal delivery&nbsp;&nbsp;
-               <input type="radio" name ="delivery_method" value="caesarean">&nbsp;Vacuum-assisted vaginal delivery&nbsp;&nbsp;</td>
+               <input type="radio" name ="delivery_method" value="scheduled_caesarean">&nbsp;Scheduled Caesarean section&nbsp;&nbsp;
+               <input type="radio" name ="delivery_method" value="unplanned_caesarean">&nbsp;Unplanned Caesarean section&nbsp;&nbsp;
+               <input type="radio" name ="delivery_method" value="vaginal_after_caesarean">&nbsp;Vaginal birth after previous C-section&nbsp;&nbsp;
+               <input type="radio" name ="delivery_method" value="scheduled_induction">&nbsp;Scheduled induction&nbsp;&nbsp;
+               <input type="radio" name ="delivery_method" value="forcep_vaginal">&nbsp;Forecep-assisted vaginal delivery&nbsp;&nbsp;
+               <input type="radio" name ="delivery_method" value="vacuum_vaginal">&nbsp;Vacuum-assisted vaginal delivery&nbsp;&nbsp;
+               <input type="radio" name ="delivery_method" value="UNKNOWN">&nbsp;Unknown delivery method&nbsp;&nbsp;</td>
       </tr>
       <tr>
           <td> Were there any complications during labor/delivery? </td>
@@ -211,8 +212,8 @@
                If yes, how long was this child hospitalized (if known)?&nbsp;<input type="text" name="time_in_nicu"></td>
       </tr>
       <tr>
-          <td> Did this child have any problems within the first few days of life? </td>
-          <td> <textarea name="other_complications_delivery" rows="2" col="40"></textarea> </td>
+          <td> Did this child have any problems within the first few days to weeks of life? </td>
+          <td> <textarea name="complications_neonatal" rows="2" col="40"></textarea> </td>
       </tr>
       <tr>
           <td> When discharged from the hospital, who did your child go home with? </td>
@@ -224,7 +225,7 @@
                <input type="checkbox" name="first_caregiver" value="other_relative">&nbsp;Other relative(s)&nbsp;&nbsp;
                <input type="checkbox" name="first_caregiver" value="foster_parent">&nbsp;Foster parent(s)&nbsp;&nbsp;
                <input type="checkbox" name="first_caregiver" value="other">&nbsp;Other&nbsp;&nbsp;
-               <input type="checkbox" name="first_caregiver" value="unknown">&nbsp;Unknown<br><br>
+               <input type="checkbox" name="first_caregiver" value="UNKNOWN">&nbsp;Unknown<br><br>
                   If other or other relative, please elaborate (if known).&nbsp;<input type="text" name="first_caregiver_other"> </td>
       </tr>
       <tr>
