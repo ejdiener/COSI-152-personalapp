@@ -5,7 +5,7 @@
   <h2>Patient Information</h2>
 </div>
 
-<form method="post" action="/formNewPatient">
+<form method="post" action="/patients/new/form">
   Please enter the following information:
   <div class="row">
     <div class="col"> Name of patient: </div>
@@ -24,12 +24,17 @@
   </div>
   <div class="row">
     <div class="col"> Address: </div>
-    <div class="col"> <input type="text" name ="providerAddress">
+    <div class="col"> <input type="text" name ="patientAddress">
     </div>
   </div>
   <div class="row">
     <div class="col"> Home phone number: </div>
     <div class="col"> <input type="text" name ="patientPhone">
+    </div>
+  </div>
+  <div class="row">
+    <div class="col"> Email address: </div>
+    <div class="col"> <input type="text" name ="patientEmail">
     </div>
   </div>
   <div class="row">
