@@ -1,6 +1,36 @@
 <%- include('bootheader') -%>
 <%- include('menubar') -%>
 
-foo
+<div class=jumbotron>
+  <h1> <%= patient.patientName %>'s Pregnancy and Birth History </h1>
+</div>
+
+<% if (pregbirth.adoptionStatus == "TRUE") {%>
+  <p><%= patient.patientName %> was adopted from <%= pregbirth.countryOfOrigin %>.</p>
+  <% } %>
+
+  <p><%= patient.patientName %> is the <%= pregbirth.birthOrder%>
+      <% if (pregbirth.birthOrder == 1) {%>st
+      <% } else if (pregbirth.birthOrder == 2) { %>nd
+      <% } else if (pregbirth.birthOrder == 3) { %>rd
+      <% } else { %>th
+    <% } %> child out of <%= pregbirth.motherTotalChildren %>. The mother's pre-pregnancy history is
+    <% if (pregbirth.hadMiscarriage == "TRUE" || pregbirth.hadTerminationAnomalies == "TRUE" {%>
+      positive for
+        <% if (pregbirth.hadMiscarriage == "TRUE") {%>
+          miscarriage
+            <% if (pregbirth.hadTerminationAnomalies == "TRUE") { %>
+              and pregnancy termination due to <%= pregbirth.terminationAnomaliesCause %>.
+            <% } else if (pregbirth.hadTerminationAnomalies == "FALSE" || pregbirth.hadTerminationAnomalies == "UNKNOWN") { %>
+              .
+            <% } %>
+        <% } else if (pregbirth.hadTerminationAnomalies == "TRUE" && pregbirth.hadMiscarriage == "FALSE" || pregbirth.hadMiscarriage == "UNKNOWN") { %>
+          pregnancy termination due to <%= pregbirth.terminationAnomaliesCause %>.
+        <% } %>
+    <% } else if (pregbirth.hadMiscarriage == "FALSE" && pregbirth.hadTerminationAnomalies == "FALSE" { %>
+      unremarkable.
+    <% } else { %>
+      unknown.
+    <% } %> </p>
 
 <%- include('bootfooter') -%>
