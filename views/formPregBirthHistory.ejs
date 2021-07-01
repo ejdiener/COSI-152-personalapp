@@ -5,7 +5,7 @@
 <h2>Pregnancy and Birth History</h2>
 </div>
 
-<form method="post" action="/history/pregbirth/form">
+<form method="post" action="/patients/history/pregbirth/form">
   Is this child adopted?<br>
     <input type="radio" name="adoption_status" value="FALSE">&nbsp;NO&nbsp;&nbsp;
     <input type="radio" name="adoption_status" value="TRUE">&nbsp;YES from <input type="text" name="country"
@@ -237,6 +237,7 @@
       </tr>
     </tbody>
   </table>
+  <input type="hidden" name="patientID" value="<%= patientId %>">
   <input type="submit" value="Submit">
 </form>
 <%- include('bootfooter') -%>
