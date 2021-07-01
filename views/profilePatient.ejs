@@ -1,6 +1,8 @@
 <%- include('bootheader') -%>
 <%- include('menubar') -%>
 
+<% console.log(patient) %>
+
 <div class=jumbotron>
   <h1> <%= patient.patientName %> </h1>
   <p> <% if (patient.patientPronouns == "he") {%>
@@ -17,14 +19,32 @@
 <p> <%= patient.patientBio %> </p>
 
 <div class="row">
-  <div class="col">  </div>
+  <div class="col"> <i>Once I finally figure out how to allow a user to upload a photo, it will go here.</i> </div>
   <div class="col">
     <table class="table table-light table-striped table-bordered">
       <tbody>
-
+        <% if (patient.patientAddress) {%>
+          <tr>
+            <td> Address </td>
+            <td> <%= patient.patientAddress %> </td>
+          </tr>
+        <% } %>
+        <% if (patient.patientPhone) {%>
+          <tr>
+            <td> Phone </td>
+            <td> <%= patient.patientPhone %> </td>
+          </tr>
+        <% } %>
+        <% if (patient.patientEmail) {%>
+          <tr>
+            <td> Email </td>
+            <td> <%= patient.patientEmail %> </td>
+          </tr>
+        <% } %>
       </tbody>
     </table>
   </div>
 </div>
+<br><br>
 
 <%- include('bootfooter') -%>
