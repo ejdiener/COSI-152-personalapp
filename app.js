@@ -77,12 +77,6 @@ app.get('/profile',
       res.render('profile')
     })
 
-app.get('/history/pregbirth/form',
-    isLoggedIn,
-    (req,res) => {
-      res.render('formPregBirthHistory')
-})
-
 app.get('/history/familymed/form',
     isLoggedIn,
     (req,res) => {
