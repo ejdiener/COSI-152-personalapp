@@ -29,7 +29,6 @@ const toDoRouter = require('./routes/todo');
 const toDoAjaxRouter = require('./routes/todoAjax');
 const profileRouter = require('./routes/profile');
 const patientsRouter = require('./routes/patients');
-const historyRouter = require('./routes/history');
 
 const wiscvRouter = require('./routes/WISC_V');
 const tempRouter = require('./routes/temp');
@@ -60,7 +59,6 @@ app.use('/patients', patientsRouter);
 app.use('/todo',toDoRouter);
 app.use('/todoAjax',toDoAjaxRouter);
 
-// Can you do /evaluations/:evalID/WISC_V
 app.use('/WISC_V',wiscvRouter);
 app.use('/temp',tempRouter);
 
@@ -71,40 +69,6 @@ const myLogger = (req,res,next) => {
 
 const Patient = require('./models/Patient');
 const Provider = require('./models/Provider');
-
-app.post("/formNewPatient",
-  isLoggedIn,
-  async (req, res, next) => {
-    const patient = new Patient(
-    { patientName: req.body.patientName,
-      patientPronouns: req.body.patientPronouns,
-      patientAddress: req.body.patientAddress,
-      patientPhone: req.body.patientPhone,
-      patientBio: req.body.patientBio,
-    })
-    await patient.save();
-    console.log(patient._id)
-    const provider = await Provider.findOne({userId:req.user._id})
-    patient.updateOne(
-      {$push: {CurrentProvidersIds:req.user._id}},
-      {safe: true, upsert: true},
-      function(err, model) {
-        console.log(err);
-      });
-    provider.updateOne(
-      {$push: {PatientIds:patient._id}},
-      {safe: true, upsert: true},
-      function(err, model) {
-        console.log(err);
-      });
-    //res.render("todoVerification")
-    res.redirect('/patients')
-  });
-
-app.get('/WJIVACH/form',
-  isLoggedIn,
-  (req,res) => {  res.render('formWJIVACH')
-})
 
 
 app.get('/profile',
@@ -117,6 +81,12 @@ app.get('/history/pregbirth/form',
     isLoggedIn,
     (req,res) => {
       res.render('formPregBirthHistory')
+})
+
+app.get('/history/familymed/form',
+    isLoggedIn,
+    (req,res) => {
+      res.render('formFamilyMedicalHistory')
 })
 
 app.get('/WJ_IV_ACHform',
@@ -143,7 +113,6 @@ app.post('/editProfile',
       } catch (error) {
         next(error)
       }
-
     })
 
 
