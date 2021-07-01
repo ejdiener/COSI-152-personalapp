@@ -11,6 +11,7 @@ var PregBirthSchema = Schema( {
     motherTotalPregnancies: Number,
     motherTotalChildren: Number,
     motherOlderChildren: Number,
+    birthOrder: Number,
     hadMiscarriage: String,                    // TRUE, FALSE, UNKNOWN
     miscarriagesTotal: Number,
     hadTerminationAnomalies: String,           // TRUE, FALSE, UNKNOWN
