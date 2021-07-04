@@ -111,9 +111,50 @@ router.post('/history/pregbirth/form',
   isLoggedIn,
   async (req, res, next) => {
     const patient = await Patient.findOne({_id:req.body.patientID})
-    let total_children = req.body.mother_total_children
-    let older_children = req.body.mother_older_children
-    const birth_order = older_children + 1
+    birth_order = parseInt(req.body.mother_older_children) + 1
+    // Checkbox resolution ↓
+    trimestersPrenatalCare = req.body.trimesters_prenatal_care
+    if (typeof(trimestersPrenatalCare) == "undefined"){
+      trimestersPrenatalCare = [""]
+    } else if (typeof(trimestersPrenatalCare) == "string") {
+      trimestersPrenatalCare = [trimestersPrenatalCare]
+    }
+    prenatalTests = req.body.prenatal_tests
+    if (typeof(prenatalTests) == "undefined"){
+      prenatalTests = [""]
+    } else if (typeof(prenatalTests) == "string") {
+      prenatalTests = [prenatalTests]
+    }
+    whenCigarettesPregnancy = req.body.when_cigarettes_pregnancy
+    if (typeof(whenCigarettesPregnancy) == "undefined"){
+      whenCigarettesPregnancy = [""]
+    } else if (typeof(whenCigarettesPregnancy) == "string") {
+      whenCigarettesPregnancy = [whenCigarettesPregnancy]
+    }
+    whenAlcoholPregnancy = req.body.when_alcohol_pregnancy
+    if (typeof(whenAlcoholPregnancy) == "undefined"){
+      whenAlcoholPregnancy = [""]
+    } else if (typeof(whenAlcoholPregnancy) == "string") {
+      whenAlcoholPregnancy = [whenAlcoholPregnancy]
+    }
+    usedDrugsPregnancy = req.body.used_drugs_pregnancy
+    if (typeof(usedDrugsPregnancy) == "undefined"){
+      usedDrugsPregnancy = [""]
+    } else if (typeof(usedDrugsPregnancy) == "string") {
+      usedDrugsPregnancy = [usedDrugsPregnancy]
+    }
+    whenDrugsPregnancy = req.body.when_drugs_pregnancy
+    if (typeof(whenDrugsPregnancy) == "undefined"){
+      whenDrugsPregnancy = [""]
+    } else if (typeof(whenDrugsPregnancy) == "string") {
+      whenDrugsPregnancy = [whenDrugsPregnancy]
+    }
+    firstCaregiver = req.body.first_caregiver
+    if (typeof(firstCaregiver) == "undefined"){
+      firstCaregiver = [""]
+    } else if (typeof(firstCaregiver) == "string") {
+      firstCaregiver = [firstCaregiver]
+    }
     const pregbirth = new PregBirth(
     { patientId: patient._id,
       adoptionStatus: req.body.adoption_status,                     // TRUE, FALSE
@@ -130,8 +171,8 @@ router.post('/history/pregbirth/form',
       requiredFertilityTreatment: req.body.required_fertility,                  // TRUE, FALSE, UNKNOWN
       fertilityTreatment: req.body.fertility_treatment,
       hadPrenatalCare: req.body.had_prenatal_care,                   // TRUE, FALSE, UNKNOWN
-      trimestersPrenatalCare: req.body.trimesters_prenatal_care,            // 1, 2, 3
-      prenatalTests: req.body.prenatal_tests,                      // had_ultrasound, had_amniocentesis, had_cvs
+      trimestersPrenatalCare: trimestersPrenatalCare,            // 1, 2, 3
+      prenatalTests: prenatalTests,                      // had_ultrasound, had_amniocentesis, had_cvs
       prenatalDiagnosis: req.body.prenatal_diagnosis,
       hadInfectionPregnancy: req.body.had_infection_pregnancy,             // TRUE, FALSE, UNKNOWN
       infectionPregnancy: req.body.infection_pregnancy,
@@ -146,13 +187,13 @@ router.post('/history/pregbirth/form',
       usedCigarettesPregnancy: req.body.used_cigarettes_pregnancy,           // TRUE, FALSE, UNKNOWN
       cigarettesPerDayPregnancy: req.body.cigarettes_per_day_pregnancy,
       cigarettesPerDayPregnancyUnit: req.body.cigarettes_per_day_pregnancy_unit,   // loose, packs
-      whenCigarettesPregnancy: req.body.when_cigarettes_pregnancy,           // 1, 2, 3, UNKNOWN
+      whenCigarettesPregnancy: whenCigarettesPregnancy,           // 1, 2, 3, UNKNOWN
       usedAlcoholPregnancy: req.body.used_alcohol_pregnancy,              // TRUE, FALSE, UNKNOWN
       alcoholPerDayPregnancy: req.body.alcohol_per_day_pregnancy,           // 1_per_week, 1_per_day, 2_plus_per_day, UNKNOWN
-      whenAlcoholPregnancy: req.body.when_alcohol_pregnancy,              // 1, 2, 3, UNKNOWN
-      usedDrugsPregnancy: req.body.used_drugs_pregnancy,                // tobacco, marijuana, cocaine, heroin, painkillers, meth, other
+      whenAlcoholPregnancy: whenAlcoholPregnancy,              // 1, 2, 3, UNKNOWN
+      usedDrugsPregnancy: usedDrugsPregnancy,                // tobacco, marijuana, cocaine, heroin, painkillers, meth, other
       usedDrugsPregnancyOther: req.body.used_drugs_pregnancy_other,
-      whenDrugsPregnancy: req.body.when_drugs_pregnancy,                // 1, 2, 3, UNKNOWN
+      whenDrugsPregnancy: whenDrugsPregnancy,                // 1, 2, 3, UNKNOWN
       otherComplicationsPregnancy: req.body.other_complications_pregnancy,
       motherAgeBirth: req.body.mother_age_birth,
       fatherAgeBirth: req.body.father_age_birth,
@@ -164,7 +205,7 @@ router.post('/history/pregbirth/form',
       admittedToNICU: req.body.admitted_to_nicu,                    // TRUE, FALSE, UNKNOWN
       timeInNICU: req.body.time_in_nicu,
       complicationsNeonatal: req.body.complications_neonatal,
-      firstCaregiver: req.body.first_caregiver,                     // bio_mother, bio_father, bio_parents, adoptive_parents, grandparent, other_relative, foster_parent, other, UNKNOWN
+      firstCaregiver: firstCaregiver,                     // bio_mother, bio_father, bio_parents, adoptive_parents, grandparent, other_relative, foster_parent, other, UNKNOWN
       firstCaregiverOther: req.body.first_caregiver_other,
       hadFeedingProblems: req.body.had_feeding_problems,                // TRUE, FALSE, UNKNOWN
       feedingProblems: req.body.feeding_problems,
@@ -184,8 +225,49 @@ router.post('/history/pregbirth/edit',
   async (req, res, next) => {
     let older_children = req.body.mother_older_children
     const birth_order = parseInt(older_children) + 1
-    console.log("1")
-    console.log(req.body.patientId)
+    // Checkbox resolution ↓
+    trimestersPrenatalCare = req.body.trimesters_prenatal_care
+    if (typeof(trimestersPrenatalCare) == "undefined"){
+      trimestersPrenatalCare = [""]
+    } else if (typeof(trimestersPrenatalCare) == "string") {
+      trimestersPrenatalCare = [trimestersPrenatalCare]
+    }
+    prenatalTests = req.body.prenatal_tests
+    if (typeof(prenatalTests) == "undefined"){
+      prenatalTests = [""]
+    } else if (typeof(prenatalTests) == "string") {
+      prenatalTests = [prenatalTests]
+    }
+    whenCigarettesPregnancy = req.body.when_cigarettes_pregnancy
+    if (typeof(whenCigarettesPregnancy) == "undefined"){
+      whenCigarettesPregnancy = [""]
+    } else if (typeof(whenCigarettesPregnancy) == "string") {
+      whenCigarettesPregnancy = [whenCigarettesPregnancy]
+    }
+    whenAlcoholPregnancy = req.body.when_alcohol_pregnancy
+    if (typeof(whenAlcoholPregnancy) == "undefined"){
+      whenAlcoholPregnancy = [""]
+    } else if (typeof(whenAlcoholPregnancy) == "string") {
+      whenAlcoholPregnancy = [whenAlcoholPregnancy]
+    }
+    usedDrugsPregnancy = req.body.used_drugs_pregnancy
+    if (typeof(usedDrugsPregnancy) == "undefined"){
+      usedDrugsPregnancy = [""]
+    } else if (typeof(usedDrugsPregnancy) == "string") {
+      usedDrugsPregnancy = [usedDrugsPregnancy]
+    }
+    whenDrugsPregnancy = req.body.when_drugs_pregnancy
+    if (typeof(whenDrugsPregnancy) == "undefined"){
+      whenDrugsPregnancy = [""]
+    } else if (typeof(whenDrugsPregnancy) == "string") {
+      whenDrugsPregnancy = [whenDrugsPregnancy]
+    }
+    firstCaregiver = req.body.first_caregiver
+    if (typeof(firstCaregiver) == "undefined"){
+      firstCaregiver = [""]
+    } else if (typeof(firstCaregiver) == "string") {
+      firstCaregiver = [firstCaregiver]
+    }
     const patient = await Patient.findOne({_id:req.body.patientId})
     try {
       const pregbirth = await PregBirth.findOne({patientId:req.body.patientId})
@@ -203,8 +285,8 @@ router.post('/history/pregbirth/edit',
       pregbirth.requiredFertilityTreatment = req.body.required_fertility                  // TRUE, FALSE, UNKNOWN
       pregbirth.fertilityTreatment = req.body.fertility_treatment
       pregbirth.hadPrenatalCare = req.body.had_prenatal_care                   // TRUE, FALSE, UNKNOWN
-      pregbirth.trimestersPrenatalCare = req.body.trimesters_prenatal_care            // 1, 2, 3
-      pregbirth.prenatalTests = req.body.prenatal_tests                      // had_ultrasound, had_amniocentesis, had_cvs
+      pregbirth.trimestersPrenatalCare = trimestersPrenatalCare            // 1, 2, 3
+      pregbirth.prenatalTests = prenatalTests                      // had_ultrasound, had_amniocentesis, had_cvs
       pregbirth.prenatalDiagnosis = req.body.prenatal_diagnosis
       pregbirth.hadInfectionPregnancy = req.body.had_infection_pregnancy             // TRUE, FALSE, UNKNOWN
       pregbirth.infectionPregnancy = req.body.infection_pregnancy
@@ -219,13 +301,13 @@ router.post('/history/pregbirth/edit',
       pregbirth.usedCigarettesPregnancy = req.body.used_cigarettes_pregnancy           // TRUE, FALSE, UNKNOWN
       pregbirth.cigarettesPerDayPregnancy = req.body.cigarettes_per_day_pregnancy
       pregbirth.cigarettesPerDayPregnancyUnit = req.body.cigarettes_per_day_pregnancy_unit   // loose, packs
-      pregbirth.whenCigarettesPregnancy = req.body.when_cigarettes_pregnancy           // 1, 2, 3, UNKNOWN
+      pregbirth.whenCigarettesPregnancy = whenCigarettesPregnancy           // 1, 2, 3, UNKNOWN
       pregbirth.usedAlcoholPregnancy = req.body.used_alcohol_pregnancy              // TRUE, FALSE, UNKNOWN
       pregbirth.alcoholPerDayPregnancy = req.body.alcohol_per_day_pregnancy           // 1_per_week, 1_per_day, 2_plus_per_day, UNKNOWN
-      pregbirth.whenAlcoholPregnancy = req.body.when_alcohol_pregnancy              // 1, 2, 3, UNKNOWN
-      pregbirth.usedDrugsPregnancy = req.body.used_drugs_pregnancy                // tobacco, marijuana, cocaine, heroin, painkillers, meth, other
+      pregbirth.whenAlcoholPregnancy = whenAlcoholPregnancy              // 1, 2, 3, UNKNOWN
+      pregbirth.usedDrugsPregnancy = usedDrugsPregnancy                // tobacco, marijuana, cocaine, heroin, painkillers, meth, other
       pregbirth.usedDrugsPregnancyOther = req.body.used_drugs_pregnancy_other
-      pregbirth.whenDrugsPregnancy = req.body.when_drugs_pregnancy                // 1, 2, 3, UNKNOWN
+      pregbirth.whenDrugsPregnancy = whenDrugsPregnancy                // 1, 2, 3, UNKNOWN
       pregbirth.otherComplicationsPregnancy = req.body.other_complications_pregnancy
       pregbirth.motherAgeBirth = req.body.mother_age_birth
       pregbirth.fatherAgeBirth = req.body.father_age_birth
@@ -237,12 +319,11 @@ router.post('/history/pregbirth/edit',
       pregbirth.admittedToNICU = req.body.admitted_to_nicu                    // TRUE, FALSE, UNKNOWN
       pregbirth.timeInNICU = req.body.time_in_nicu
       pregbirth.complicationsNeonatal = req.body.complications_neonatal
-      pregbirth.firstCaregiver = req.body.first_caregiver                     // bio_mother, bio_father, bio_parents, adoptive_parents, grandparent, other_relative, foster_parent, other, UNKNOWN
+      pregbirth.firstCaregiver = firstCaregiver                     // bio_mother, bio_father, bio_parents, adoptive_parents, grandparent, other_relative, foster_parent, other, UNKNOWN
       pregbirth.firstCaregiverOther = req.body.first_caregiver_other
       pregbirth.hadFeedingProblems = req.body.had_feeding_problems                // TRUE, FALSE, UNKNOWN
       pregbirth.feedingProblems = req.body.feeding_problems
       await pregbirth.save();
-      console.log("4 " +req.body.patientId)
       res.redirect('/patients/'+req.body.patientId+'/history/pregbirth')
     } catch (e) {
       next(e)
