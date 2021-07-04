@@ -9,7 +9,7 @@ var ProviderSchema = Schema( {
   providerName: String,
   providerPronouns: String,
   providerRole: String,
-  providerEducation: String,
+  providerEducation: [{type:String}],
   providerOrganization: String,
   providerAddress: String,
   providerPhone: String,
