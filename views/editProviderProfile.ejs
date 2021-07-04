@@ -37,8 +37,7 @@
   </div>
   <div class="row">
     <div class="col"> Role in care of the patient: </div>
-    <div class="col"> <% console.log(provider.providerRole)
-      if (provider.providerRole == "guardian") { %>
+    <div class="col"> <% if (provider.providerRole == "guardian") { %>
                           <input type="Radio" name ="providerRole" value='guardian' checked>&nbsp;Parent/Guardian<br>
                       <% } else { %>
                           <input type="Radio" name ="providerRole" value='guardian'>&nbsp;Parent/Guardian<br>
@@ -103,35 +102,35 @@
   </div>
   <div class="row">
     <div class="col"> Title that should follow your name: </div>
-    <div class="col"> <% if (provider.providerEducation == "md") { %>
+    <div class="col"> <% if (provider.providerEducation.includes("md")) { %>
                           <input type="Checkbox" name ="providerEducation" value ="md" checked>&nbsp;MD&nbsp;&nbsp;
                       <% } else { %>
                           <input type="Checkbox" name ="providerEducation" value ="md">&nbsp;MD&nbsp;&nbsp;
-                      <% } if (provider.providerEducation == "phd") { %>
+                      <% } if (provider.providerEducation.includes("phd")) { %>
                           <input type="Checkbox" name ="providerEducation" value ="phd" checked>&nbsp;PhD&nbsp;&nbsp;
                       <% } else { %>
                           <input type="Checkbox" name ="providerEducation" value ="phd">&nbsp;PhD&nbsp;&nbsp;
-                      <% } if (provider.providerEducation == "ms") { %>
+                      <% } if (provider.providerEducation.includes("ms")) { %>
                           <input type="Checkbox" name ="providerEducation" value ="ms" checked>&nbsp;MS&nbsp;&nbsp;
                       <% } else { %>
                           <input type="Checkbox" name ="providerEducation" value ="ms">&nbsp;MS&nbsp;&nbsp;
-                      <% } if (provider.providerEducation == "ma") { %>
+                      <% } if (provider.providerEducation.includes("ma")) { %>
                           <input type="Checkbox" name ="providerEducation" value ="ma" checked>&nbsp;MA&nbsp;&nbsp;
                       <% } else { %>
                           <input type="Checkbox" name ="providerEducation" value ="ma">&nbsp;MA&nbsp;&nbsp;
-                      <% } if (provider.providerEducation == "ccc_slp") { %>
+                      <% } if (provider.providerEducation.includes("ccc_slp")) { %>
                           <input type="Checkbox" name ="providerEducation" value ="ccc_slp" checked>&nbsp;CCC-SLP&nbsp;&nbsp;
                       <% } else { %>
                           <input type="Checkbox" name ="providerEducation" value ="ccc_slp">&nbsp;CCC-SLP&nbsp;&nbsp;
-                      <% } if (provider.providerEducation == "otr") { %>
+                      <% } if (provider.providerEducation.includes("otr")) { %>
                           <input type="Checkbox" name ="providerEducation" value ="otr" checked>&nbsp;OTR&nbsp;&nbsp;
                       <% } else { %>
                           <input type="Checkbox" name ="providerEducation" value ="otr">&nbsp;OTR&nbsp;&nbsp;
-                      <% } if (provider.providerEducation == "pt") { %>
+                      <% } if (provider.providerEducation.includes("pt")) { %>
                           <input type="Checkbox" name ="providerEducation" value ="pt" checked>&nbsp;PT&nbsp;&nbsp;
                       <% } else { %>
                           <input type="Checkbox" name ="providerEducation" value ="pt">&nbsp;PT&nbsp;&nbsp;
-                      <% } if (provider.providerEducation == "lcsw") { %>
+                      <% } if (provider.providerEducation.includes("lcsw")) { %>
                           <input type="Checkbox" name ="providerEducation" value ="lcsw" checked>&nbsp;LCSW&nbsp;&nbsp;
                       <% } else { %>
                           <input type="Checkbox" name ="providerEducation" value ="lcsw">&nbsp;LCSW&nbsp;&nbsp;
