@@ -44,17 +44,23 @@ router.post('/form',
     isLoggedIn,
     async (req,res,next) => {
         await Provider.deleteMany({userId:req.user._id})
+        providerEducation = req.body.providerEducation
+        if (typeof(providerEducation) == "undefined"){
+          providerEducation = [""]
+        } else if (typeof(providerEducation) == "string") {
+          providerEducation = [providerEducation]
+        }
         const provider = new Provider(
           { providerName: req.body.providerName,
             providerPronouns: req.body.providerPronouns,
             providerRole: req.body.providerRole,
-            providerEducation: req.body.providerEducation,
             providerOrganization: req.body.providerOrganization,
             providerAddress: req.body.providerAddress,
             providerPhone: req.body.providerPhone,
             providerEmail: req.body.providerEmail,
             providerBio: req.body.providerBio,
-            userId: req.user._id
+            userId: req.user._id,
+            providerEducation: providerEducation
           })
         await provider.save();
         //res.render("todoVerification")
@@ -69,12 +75,18 @@ router.post('/form',
           provider.providerName = req.body.providerName
           provider.providerPronouns = req.body.providerPronouns
           provider.providerRole = req.body.providerRole,
-          provider.providerEducation = req.body.providerEducation
           provider.providerOrganization = req.body.providerOrganization
           provider.providerAddress = req.body.providerAddress
           provider.providerPhone = req.body.providerPhone
           provider.providerEmail = req.body.providerEmail
           provider.providerBio = req.body.providerBio
+          providerEducation = req.body.providerEducation
+          if (typeof(providerEducation) == "undefined"){
+            providerEducation = [""]
+          } else if (typeof(providerEducation) == "string") {
+            providerEducation = [providerEducation]
+          }
+          provider.providerEducation = providerEducation
           await provider.save()
           console.log(provider)
           //res.render("todoVerification")
