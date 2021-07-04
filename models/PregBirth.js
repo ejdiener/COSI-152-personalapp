@@ -20,8 +20,8 @@ var PregBirthSchema = Schema( {
     requiredFertilityTreatment: String,        // TRUE, FALSE, UNKNOWN
     fertilityTreatment: String,
     hadPrenatalCare: String,                   // TRUE, FALSE, UNKNOWN
-    trimestersPrenatalCare: String,            // 1, 2, 3
-    prenatalTests: String,                     // had_ultrasound, had_amniocentesis, had_cvs
+    trimestersPrenatalCare: [{type:String}],            // 1, 2, 3
+    prenatalTests: [{type:String}],                     // had_ultrasound, had_amniocentesis, had_cvs
     prenatalDiagnosis: String,
     hadInfectionPregnancy: String,             // TRUE, FALSE, UNKNOWN
     infectionPregnancy: String,
@@ -36,13 +36,13 @@ var PregBirthSchema = Schema( {
     usedCigarettesPregnancy: String,           // TRUE, FALSE, UNKNOWN
     cigarettesPerDayPregnancy: Number,
     cigarettesPerDayPregnancyUnit: String,   // loose, packs
-    whenCigarettesPregnancy: String,           // 1, 2, 3, UNKNOWN
+    whenCigarettesPregnancy: [{type:String}],           // 1, 2, 3, UNKNOWN
     usedAlcoholPregnancy: String,              // TRUE, FALSE, UNKNOWN
     alcoholPerDayPregnancy: String,           // 1_per_week, 1_per_day, 2_plus_per_day, UNKNOWN
-    whenAlcoholPregnancy: String,              // 1, 2, 3, UNKNOWN
-    usedDrugsPregnancy: String,                // tobacco, marijuana, cocaine, heroin, painkillers, meth, other
+    whenAlcoholPregnancy: [{type:String}],              // 1, 2, 3, UNKNOWN
+    usedDrugsPregnancy: [{type:String}],                // tobacco, marijuana, cocaine, heroin, painkillers, meth, other
     usedDrugsPregnancyOther: String,
-    whenDrugsPregnancy: String,                // 1, 2, 3, UNKNOWN
+    whenDrugsPregnancy: [{type:String}],                // 1, 2, 3, UNKNOWN
     otherComplicationsPregnancy: String,
     motherAgeBirth: Number,
     fatherAgeBirth: Number,
@@ -54,7 +54,7 @@ var PregBirthSchema = Schema( {
     admittedToNICU: String,                    // TRUE, FALSE, UNKNOWN
     timeInNICU: String,
     complicationsNeonatal: String,
-    firstCaregiver: String,                     // bio_mother, bio_father, bio_parents, adoptive_parents, grandparent, other_relative, foster_parent, other, UNKNOWN
+    firstCaregiver: [{type:String}],                     // bio_mother, bio_father, bio_parents, adoptive_parents, grandparent, other_relative, foster_parent, other, UNKNOWN
     firstCaregiverOther: String,
     hadFeedingProblems: String,                // TRUE, FALSE, UNKNOWN
     feedingProblems: String
