@@ -14,23 +14,6 @@
       <% } else if (pregbirth.birthOrder == 2) { %>nd
       <% } else if (pregbirth.birthOrder == 3) { %>rd
       <% } else { %>th
-    <% } %> child out of <%= pregbirth.motherTotalChildren %>. The mother's pre-pregnancy history is
-    <% if (pregbirth.hadMiscarriage == "TRUE" || pregbirth.hadTerminationAnomalies == "TRUE" {%>
-      positive for
-        <% if (pregbirth.hadMiscarriage == "TRUE") {%>
-          miscarriage
-            <% if (pregbirth.hadTerminationAnomalies == "TRUE") { %>
-              and pregnancy termination due to <%= pregbirth.terminationAnomaliesCause %>.
-            <% } else if (pregbirth.hadTerminationAnomalies == "FALSE" || pregbirth.hadTerminationAnomalies == "UNKNOWN") { %>
-              .
-            <% } %>
-        <% } else if (pregbirth.hadTerminationAnomalies == "TRUE" && pregbirth.hadMiscarriage == "FALSE" || pregbirth.hadMiscarriage == "UNKNOWN") { %>
-          pregnancy termination due to <%= pregbirth.terminationAnomaliesCause %>.
-        <% } %>
-    <% } else if (pregbirth.hadMiscarriage == "FALSE" && pregbirth.hadTerminationAnomalies == "FALSE" { %>
-      unremarkable.
-    <% } else { %>
-      unknown.
-    <% } %> </p>
+    <% } %> child out of <%= pregbirth.motherTotalChildren %>.</p>
 
 <%- include('bootfooter') -%>
