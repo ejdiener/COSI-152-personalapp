@@ -5,7 +5,7 @@
 <h2>Family History</h2>
 </div>
 
-<form method="post" action="/history/family">
+<form method="post" action="/history/familymedical/form">
   Please indicate if someone in <i>this child's biological family</i> has any of the following conditions:
   <table class="table table-bordered table-striped">
     <tbody>
@@ -22,7 +22,7 @@
              <input type="checkbox" name ="family_relation_alcohol" value="paternal">&nbsp;Relative on father's side&nbsp;&nbsp;
              <input type="checkbox" name ="family_relation_alcohol" value="unknown">&nbsp;Unknown<br><br>
              Please elaborate on the condition, how many family members are affected, and their relationship to the child:<br>
-                <textarea name="family_relations_alcohol_elaborate" rows="2" cols="40"></textarea></td>
+                <textarea name="family_relation_alcohol_elaborate" rows="2" cols="40"></textarea></td>
       </tr>
       <tr>
         <td> Attention deficit hyperactivity disorder (ADHD) </td>
@@ -37,7 +37,7 @@
              <input type="checkbox" name ="family_relation_adhd" value="paternal">&nbsp;Relative on father's side&nbsp;&nbsp;
              <input type="checkbox" name ="family_relation_adhd" value="unknown">&nbsp;Unknown<br><br>
              Please elaborate on the condition, how many family members are affected, and their relationship to the child:<br>
-                <textarea name="family_relations_adhd_elaborate" rows="2" cols="40"></textarea></td>
+                <textarea name="family_relation_adhd_elaborate" rows="2" cols="40"></textarea></td>
       </tr>
       <tr>
         <td> Autism spectrum disorder (ASD) </td>
@@ -52,7 +52,7 @@
              <input type="checkbox" name ="family_relation_autism" value="paternal">&nbsp;Relative on father's side&nbsp;&nbsp;
              <input type="checkbox" name ="family_relation_autism" value="unknown">&nbsp;Unknown<br><br>
              Please elaborate on the condition, how many family members are affected, and their relationship to the child:<br>
-                <textarea name="family_relations_autism_elaborate" rows="2" cols="40"></textarea></td>
+                <textarea name="family_relation_autism_elaborate" rows="2" cols="40"></textarea></td>
       </tr>
       <tr>
         <td> Anxiety disorder/chronic nervousness </td>
@@ -67,7 +67,7 @@
              <input type="checkbox" name ="family_relation_autism" value="paternal">&nbsp;Relative on father's side&nbsp;&nbsp;
              <input type="checkbox" name ="family_relation_autism" value="unknown">&nbsp;Unknown<br><br>
              Please elaborate on the condition, how many family members are affected, and their relationship to the child:<br>
-                <textarea name="family_relations_autism_elaborate" rows="2" cols="40"></textarea></td>
+                <textarea name="family_relation_autism_elaborate" rows="2" cols="40"></textarea></td>
       </tr>
       <tr>
         <td> Behavior problems </td>
@@ -82,22 +82,22 @@
              <input type="checkbox" name ="family_relation_behaviorproblems" value="paternal">&nbsp;Relative on father's side&nbsp;&nbsp;
              <input type="checkbox" name ="family_relation_behaviorproblems" value="unknown">&nbsp;Unknown<br><br>
              Please elaborate on the condition, how many family members are affected, and their relationship to the child:<br>
-                <textarea name="family_relations_behaviorproblems_elaborate" rows="2" cols="40"></textarea></td>
+                <textarea name="family_relation_behaviorproblems_elaborate" rows="2" cols="40"></textarea></td>
       </tr>
       <tr>
         <td> Bipolar disorder/manic depression </td>
-        <td style="width: 90px"> <input type="radio" name ="family_adhd" value="TRUE">&nbsp;Yes<br>
-                                   <input type="radio" name ="family_adhd" value="FALSE">&nbsp;No<br>
-                                   <input type="radio" name ="family_adhd" value="UNKNOWN">&nbsp;Unsure</td>
-        <td> <input type="checkbox" name ="family_relation_adhd" value="mother">&nbsp;Mother&nbsp;&nbsp;
-             <input type="checkbox" name ="family_relation_adhd" value="father">&nbsp;Father&nbsp;&nbsp;
-             <input type="checkbox" name ="family_relation_adhd" value="brother">&nbsp;Brother(s)&nbsp;&nbsp;
-             <input type="checkbox" name ="family_relation_adhd" value="sister">&nbsp;Sister(s)&nbsp;&nbsp;
-             <input type="checkbox" name ="family_relation_adhd" value="maternal">&nbsp;Relative on mother's side&nbsp;&nbsp;
-             <input type="checkbox" name ="family_relation_adhd" value="paternal">&nbsp;Relative on father's side&nbsp;&nbsp;
-             <input type="checkbox" name ="family_relation_adhd" value="unknown">&nbsp;Unknown<br><br>
+        <td style="width: 90px"> <input type="radio" name ="family_bipolar" value="TRUE">&nbsp;Yes<br>
+                                   <input type="radio" name ="family_bipolar" value="FALSE">&nbsp;No<br>
+                                   <input type="radio" name ="family_bipolar" value="UNKNOWN">&nbsp;Unsure</td>
+        <td> <input type="checkbox" name ="family_relation_bipolar" value="mother">&nbsp;Mother&nbsp;&nbsp;
+             <input type="checkbox" name ="family_relation_bipolar" value="father">&nbsp;Father&nbsp;&nbsp;
+             <input type="checkbox" name ="family_relation_bipolar" value="brother">&nbsp;Brother(s)&nbsp;&nbsp;
+             <input type="checkbox" name ="family_relation_bipolar" value="sister">&nbsp;Sister(s)&nbsp;&nbsp;
+             <input type="checkbox" name ="family_relation_bipolar" value="maternal">&nbsp;Relative on mother's side&nbsp;&nbsp;
+             <input type="checkbox" name ="family_relation_bipolar" value="paternal">&nbsp;Relative on father's side&nbsp;&nbsp;
+             <input type="checkbox" name ="family_relation_bipolar" value="unknown">&nbsp;Unknown<br><br>
              Please elaborate on the condition, how many family members are affected, and their relationship to the child:<br>
-                <textarea name="family_relations_adhd_elaborate" rows="2" cols="40"></textarea></td>
+                <textarea name="family_relation_bipolar_elaborate" rows="2" cols="40"></textarea></td>
       </tr>
       <tr>
         <td> Blindness/visual impairment present at birth or in childhood </td>
@@ -112,7 +112,7 @@
              <input type="checkbox" name ="family_relation_visuallyimpaired" value="paternal">&nbsp;Relative on father's side&nbsp;&nbsp;
              <input type="checkbox" name ="family_relation_visuallyimpaired" value="unknown">&nbsp;Unknown<br><br>
              Please elaborate on the condition, how many family members are affected, and their relationship to the child:<br>
-                <textarea name="family_relations_visuallyimpaired_elaborate" rows="2" cols="40"></textarea></td>
+                <textarea name="family_relation_visuallyimpaired_elaborate" rows="2" cols="40"></textarea></td>
       </tr>
       <tr>
         <td> Celiac disease </td>
@@ -127,7 +127,7 @@
              <input type="checkbox" name ="family_relation_celiac" value="paternal">&nbsp;Relative on father's side&nbsp;&nbsp;
              <input type="checkbox" name ="family_relation_celiac" value="unknown">&nbsp;Unknown<br><br>
              Please elaborate on the condition, how many family members are affected, and their relationship to the child:<br>
-                <textarea name="family_relations_celiac_elaborate" rows="2" cols="40"></textarea></td>
+                <textarea name="family_relation_celiac_elaborate" rows="2" cols="40"></textarea></td>
       </tr>
       <tr>
         <td> Cerebral palsy </td>
@@ -142,7 +142,7 @@
              <input type="checkbox" name ="family_relation_cerebralpalsy" value="paternal">&nbsp;Relative on father's side&nbsp;&nbsp;
              <input type="checkbox" name ="family_relation_cerebralpalsy" value="unknown">&nbsp;Unknown<br><br>
              Please elaborate on the condition, how many family members are affected, and their relationship to the child:<br>
-                <textarea name="family_relations_cerebralpalsy_elaborate" rows="2" cols="40"></textarea></td>
+                <textarea name="family_relation_cerebralpalsy_elaborate" rows="2" cols="40"></textarea></td>
       </tr>
       <tr>
         <td> Deafness/hearing problems present at birth or in childhood </td>
@@ -157,7 +157,7 @@
              <input type="checkbox" name ="family_relation_hearingproblems" value="paternal">&nbsp;Relative on father's side&nbsp;&nbsp;
              <input type="checkbox" name ="family_relation_hearingproblems" value="unknown">&nbsp;Unknown<br><br>
              Please elaborate on the condition, how many family members are affected, and their relationship to the child:<br>
-                <textarea name="family_relations_hearingproblems_elaborate" rows="2" cols="40"></textarea></td>
+                <textarea name="family_relation_hearingproblems_elaborate" rows="2" cols="40"></textarea></td>
       </tr>
       <tr>
         <td> Depression </td>
@@ -172,7 +172,7 @@
              <input type="checkbox" name ="family_relation_depression" value="paternal">&nbsp;Relative on father's side&nbsp;&nbsp;
              <input type="checkbox" name ="family_relation_depression" value="unknown">&nbsp;Unknown<br><br>
              Please elaborate on the condition, how many family members are affected, and their relationship to the child:<br>
-                <textarea name="family_relations_depression_elaborate" rows="2" cols="40"></textarea></td>
+                <textarea name="family_relation_depression_elaborate" rows="2" cols="40"></textarea></td>
       </tr>
       <tr>
         <td> Diabetes in childhood </td>
@@ -187,7 +187,7 @@
              <input type="checkbox" name ="family_relation_diabetes" value="paternal">&nbsp;Relative on father's side&nbsp;&nbsp;
              <input type="checkbox" name ="family_relation_diabetes" value="unknown">&nbsp;Unknown<br><br>
              Please elaborate on the condition, how many family members are affected, and their relationship to the child:<br>
-                <textarea name="family_relations_diabetes_elaborate" rows="2" cols="40"></textarea></td>
+                <textarea name="family_relation_diabetes_elaborate" rows="2" cols="40"></textarea></td>
       </tr>
       <tr>
         <td> Drug addiction </td>
@@ -202,7 +202,7 @@
              <input type="checkbox" name ="family_relation_drugs" value="paternal">&nbsp;Relative on father's side&nbsp;&nbsp;
              <input type="checkbox" name ="family_relation_drugs" value="unknown">&nbsp;Unknown<br><br>
              Please elaborate on the condition, how many family members are affected, and their relationship to the child:<br>
-                <textarea name="family_relations_drugs_elaborate" rows="2" cols="40"></textarea></td>
+                <textarea name="family_relation_drugs_elaborate" rows="2" cols="40"></textarea></td>
       </tr>
       <tr>
         <td> Epilepsy/seizures/neurological problems </td>
@@ -217,7 +217,7 @@
              <input type="checkbox" name ="family_relation_seizures" value="paternal">&nbsp;Relative on father's side&nbsp;&nbsp;
              <input type="checkbox" name ="family_relation_seizures" value="unknown">&nbsp;Unknown<br><br>
              Please elaborate on the condition, how many family members are affected, and their relationship to the child:<br>
-                <textarea name="family_relations_seizures_elaborate" rows="2" cols="40"></textarea></td>
+                <textarea name="family_relation_seizures_elaborate" rows="2" cols="40"></textarea></td>
       </tr>
       <tr>
         <td> Genetic disorder/birth defect </td>
@@ -232,22 +232,7 @@
              <input type="checkbox" name ="family_relation_genetic" value="paternal">&nbsp;Relative on father's side&nbsp;&nbsp;
              <input type="checkbox" name ="family_relation_genetic" value="unknown">&nbsp;Unknown<br><br>
              Please elaborate on the condition, how many family members are affected, and their relationship to the child:<br>
-                <textarea name="family_relations_genetic_elaborate" rows="2" cols="40"></textarea></td>
-      </tr>
-      <tr>
-        <td> Heart rhythm problems/pacemaker </td>
-        <td style="width: 90px"> <input type="radio" name ="family_heartrhythm" value="TRUE">&nbsp;Yes<br>
-                                   <input type="radio" name ="family_heartrhythm" value="FALSE">&nbsp;No<br>
-                                   <input type="radio" name ="family_heartrhythm" value="UNKNOWN">&nbsp;Unsure</td>
-        <td> <input type="checkbox" name ="family_relation_heartrhythm" value="mother">&nbsp;Mother&nbsp;&nbsp;
-             <input type="checkbox" name ="family_relation_heartrhythm" value="father">&nbsp;Father&nbsp;&nbsp;
-             <input type="checkbox" name ="family_relation_heartrhythm" value="brother">&nbsp;Brother(s)&nbsp;&nbsp;
-             <input type="checkbox" name ="family_relation_heartrhythm" value="sister">&nbsp;Sister(s)&nbsp;&nbsp;
-             <input type="checkbox" name ="family_relation_heartrhythm" value="maternal">&nbsp;Relative on mother's side&nbsp;&nbsp;
-             <input type="checkbox" name ="family_relation_heartrhythm" value="paternal">&nbsp;Relative on father's side&nbsp;&nbsp;
-             <input type="checkbox" name ="family_relation_heartrhythm" value="unknown">&nbsp;Unknown<br><br>
-             Please elaborate on the condition, how many family members are affected, and their relationship to the child:<br>
-                <textarea name="family_relations_heartrhythm_elaborate" rows="2" cols="40"></textarea></td>
+                <textarea name="family_relation_genetic_elaborate" rows="2" cols="40"></textarea></td>
       </tr>
       <tr>
         <td> Heart attack/heart problems under 50 </td>
@@ -262,7 +247,22 @@
              <input type="checkbox" name ="family_relation_heartproblems" value="paternal">&nbsp;Relative on father's side&nbsp;&nbsp;
              <input type="checkbox" name ="family_relation_heartproblems" value="unknown">&nbsp;Unknown<br><br>
              Please elaborate on the condition, how many family members are affected, and their relationship to the child:<br>
-                <textarea name="family_relations_heartproblems_elaborate" rows="2" cols="40"></textarea></td>
+                <textarea name="family_relation_heartproblems_elaborate" rows="2" cols="40"></textarea></td>
+      </tr>
+      <tr>
+        <td> Heart rhythm problems/pacemaker </td>
+        <td style="width: 90px"> <input type="radio" name ="family_heartrhythm" value="TRUE">&nbsp;Yes<br>
+                                   <input type="radio" name ="family_heartrhythm" value="FALSE">&nbsp;No<br>
+                                   <input type="radio" name ="family_heartrhythm" value="UNKNOWN">&nbsp;Unsure</td>
+        <td> <input type="checkbox" name ="family_relation_heartrhythm" value="mother">&nbsp;Mother&nbsp;&nbsp;
+             <input type="checkbox" name ="family_relation_heartrhythm" value="father">&nbsp;Father&nbsp;&nbsp;
+             <input type="checkbox" name ="family_relation_heartrhythm" value="brother">&nbsp;Brother(s)&nbsp;&nbsp;
+             <input type="checkbox" name ="family_relation_heartrhythm" value="sister">&nbsp;Sister(s)&nbsp;&nbsp;
+             <input type="checkbox" name ="family_relation_heartrhythm" value="maternal">&nbsp;Relative on mother's side&nbsp;&nbsp;
+             <input type="checkbox" name ="family_relation_heartrhythm" value="paternal">&nbsp;Relative on father's side&nbsp;&nbsp;
+             <input type="checkbox" name ="family_relation_heartrhythm" value="unknown">&nbsp;Unknown<br><br>
+             Please elaborate on the condition, how many family members are affected, and their relationship to the child:<br>
+                <textarea name="family_relation_heartrhythm_elaborate" rows="2" cols="40"></textarea></td>
       </tr>
       <tr>
         <td> Intellectual disability/mental retardation </td>
@@ -277,7 +277,7 @@
              <input type="checkbox" name ="family_relation_intellectual" value="paternal">&nbsp;Relative on father's side&nbsp;&nbsp;
              <input type="checkbox" name ="family_relation_intellectual" value="unknown">&nbsp;Unknown<br><br>
              Please elaborate on the condition, how many family members are affected, and their relationship to the child:<br>
-                <textarea name="family_relations_intellectual_elaborate" rows="2" cols="40"></textarea></td>
+                <textarea name="family_relation_intellectual_elaborate" rows="2" cols="40"></textarea></td>
       </tr>
       <tr>
         <td> Math problems/dyscalculia </td>
@@ -292,7 +292,7 @@
              <input type="checkbox" name ="family_relation_dyscalculia" value="paternal">&nbsp;Relative on father's side&nbsp;&nbsp;
              <input type="checkbox" name ="family_relation_dyscalculia" value="unknown">&nbsp;Unknown<br><br>
              Please elaborate on the condition, how many family members are affected, and their relationship to the child:<br>
-                <textarea name="family_relations_dyscalculia_elaborate" rows="2" cols="40"></textarea></td>
+                <textarea name="family_relation_dyscalculia_elaborate" rows="2" cols="40"></textarea></td>
       </tr>
       <tr>
         <td> Migraine headaches </td>
@@ -307,7 +307,7 @@
              <input type="checkbox" name ="family_relation_migraine" value="paternal">&nbsp;Relative on father's side&nbsp;&nbsp;
              <input type="checkbox" name ="family_relation_migraine" value="unknown">&nbsp;Unknown<br><br>
              Please elaborate on the condition, how many family members are affected, and their relationship to the child:<br>
-                <textarea name="family_relations_migraine_elaborate" rows="2" cols="40"></textarea></td>
+                <textarea name="family_relation_migraine_elaborate" rows="2" cols="40"></textarea></td>
       </tr>
       <tr>
         <td> Obsessive-compulsive disorder </td>
@@ -322,22 +322,22 @@
              <input type="checkbox" name ="family_relation_ocd" value="paternal">&nbsp;Relative on father's side&nbsp;&nbsp;
              <input type="checkbox" name ="family_relation_ocd" value="unknown">&nbsp;Unknown<br><br>
              Please elaborate on the condition, how many family members are affected, and their relationship to the child:<br>
-                <textarea name="family_relations_ocd_elaborate" rows="2" cols="40"></textarea></td>
+                <textarea name="family_relation_ocd_elaborate" rows="2" cols="40"></textarea></td>
       </tr>
       <tr>
         <td> Panic attacks </td>
-        <td style="width: 90px"> <input type="radio" name ="family_autism" value="TRUE">&nbsp;Yes<br>
-                                   <input type="radio" name ="family_autism" value="FALSE">&nbsp;No<br>
-                                   <input type="radio" name ="family_autism" value="UNKNOWN">&nbsp;Unsure</td>
-        <td> <input type="checkbox" name ="family_relation_autism" value="mother">&nbsp;Mother&nbsp;&nbsp;
-             <input type="checkbox" name ="family_relation_autism" value="father">&nbsp;Father&nbsp;&nbsp;
-             <input type="checkbox" name ="family_relation_autism" value="brother">&nbsp;Brother(s)&nbsp;&nbsp;
-             <input type="checkbox" name ="family_relation_autism" value="sister">&nbsp;Sister(s)&nbsp;&nbsp;
-             <input type="checkbox" name ="family_relation_autism" value="maternal">&nbsp;Relative on mother's side&nbsp;&nbsp;
-             <input type="checkbox" name ="family_relation_autism" value="paternal">&nbsp;Relative on father's side&nbsp;&nbsp;
-             <input type="checkbox" name ="family_relation_autism" value="unknown">&nbsp;Unknown<br><br>
+        <td style="width: 90px"> <input type="radio" name ="family_panicattacks" value="TRUE">&nbsp;Yes<br>
+                                   <input type="radio" name ="family_panicattacks" value="FALSE">&nbsp;No<br>
+                                   <input type="radio" name ="family_panicattacks" value="UNKNOWN">&nbsp;Unsure</td>
+        <td> <input type="checkbox" name ="family_relation_panicattacks" value="mother">&nbsp;Mother&nbsp;&nbsp;
+             <input type="checkbox" name ="family_relation_panicattacks" value="father">&nbsp;Father&nbsp;&nbsp;
+             <input type="checkbox" name ="family_relation_panicattacks" value="brother">&nbsp;Brother(s)&nbsp;&nbsp;
+             <input type="checkbox" name ="family_relation_panicattacks" value="sister">&nbsp;Sister(s)&nbsp;&nbsp;
+             <input type="checkbox" name ="family_relation_panicattacks" value="maternal">&nbsp;Relative on mother's side&nbsp;&nbsp;
+             <input type="checkbox" name ="family_relation_panicattacks" value="paternal">&nbsp;Relative on father's side&nbsp;&nbsp;
+             <input type="checkbox" name ="family_relation_panicattacks" value="unknown">&nbsp;Unknown<br><br>
              Please elaborate on the condition, how many family members are affected, and their relationship to the child:<br>
-                <textarea name="family_relations_autism_elaborate" rows="2" cols="40"></textarea></td>
+                <textarea name="family_relation_panicattacks_elaborate" rows="2" cols="40"></textarea></td>
       </tr>
       <tr>
         <td> Physical or sexual abuse </td>
@@ -352,7 +352,7 @@
              <input type="checkbox" name ="family_relation_abuse" value="paternal">&nbsp;Relative on father's side&nbsp;&nbsp;
              <input type="checkbox" name ="family_relation_abuse" value="unknown">&nbsp;Unknown<br><br>
              Please elaborate on the condition, how many family members are affected, and their relationship to the child:<br>
-                <textarea name="family_relations_abuse_elaborate" rows="2" cols="40"></textarea></td>
+                <textarea name="family_relation_abuse_elaborate" rows="2" cols="40"></textarea></td>
       </tr>
       <tr>
         <td> Post-traumatic stress disorder (PTSD) </td>
@@ -367,7 +367,7 @@
              <input type="checkbox" name ="family_relation_ptsd" value="paternal">&nbsp;Relative on father's side&nbsp;&nbsp;
              <input type="checkbox" name ="family_relation_ptsd" value="unknown">&nbsp;Unknown<br><br>
              Please elaborate on the condition, how many family members are affected, and their relationship to the child:<br>
-                <textarea name="family_relations_ptsd_elaborate" rows="2" cols="40"></textarea></td>
+                <textarea name="family_relation_ptsd_elaborate" rows="2" cols="40"></textarea></td>
       </tr>
       <tr>
         <td> Reading problems/dyslexia </td>
@@ -382,7 +382,7 @@
              <input type="checkbox" name ="family_relation_dyslexia" value="paternal">&nbsp;Relative on father's side&nbsp;&nbsp;
              <input type="checkbox" name ="family_relation_dyslexia" value="unknown">&nbsp;Unknown<br><br>
              Please elaborate on the condition, how many family members are affected, and their relationship to the child:<br>
-                <textarea name="family_relations_dyslexia_elaborate" rows="2" cols="40"></textarea></td>
+                <textarea name="family_relation_dyslexia_elaborate" rows="2" cols="40"></textarea></td>
       </tr>
       <tr>
         <td> Schizophrenia/hallucinations </td>
@@ -397,7 +397,7 @@
              <input type="checkbox" name ="family_relation_schizophrenia" value="paternal">&nbsp;Relative on father's side&nbsp;&nbsp;
              <input type="checkbox" name ="family_relation_schizophrenia" value="unknown">&nbsp;Unknown<br><br>
              Please elaborate on the condition, how many family members are affected, and their relationship to the child:<br>
-                <textarea name="family_relations_schizophrenia_elaborate" rows="2" cols="40"></textarea></td>
+                <textarea name="family_relation_schizophrenia_elaborate" rows="2" cols="40"></textarea></td>
       </tr>
       <tr>
         <td> School problems </td>
@@ -412,7 +412,7 @@
              <input type="checkbox" name ="family_relation_schoolproblems" value="paternal">&nbsp;Relative on father's side&nbsp;&nbsp;
              <input type="checkbox" name ="family_relation_schoolproblems" value="unknown">&nbsp;Unknown<br><br>
              Please elaborate on the condition, how many family members are affected, and their relationship to the child:<br>
-                <textarea name="family_relations_schoolproblems_elaborate" rows="2" cols="40"></textarea></td>
+                <textarea name="family_relation_schoolproblems_elaborate" rows="2" cols="40"></textarea></td>
       </tr>
       <tr>
         <td> Social problems/shyness </td>
@@ -427,7 +427,7 @@
              <input type="checkbox" name ="family_relation_socialproblems" value="paternal">&nbsp;Relative on father's side&nbsp;&nbsp;
              <input type="checkbox" name ="family_relation_socialproblems" value="unknown">&nbsp;Unknown<br><br>
              Please elaborate on the condition, how many family members are affected, and their relationship to the child:<br>
-                <textarea name="family_relations_socialproblems_elaborate" rows="2" cols="40"></textarea></td>
+                <textarea name="family_relation_socialproblems_elaborate" rows="2" cols="40"></textarea></td>
       </tr>
       <tr>
         <td> Speech/language problems </td>
@@ -442,7 +442,7 @@
              <input type="checkbox" name ="family_relation_speechlanguage" value="paternal">&nbsp;Relative on father's side&nbsp;&nbsp;
              <input type="checkbox" name ="family_relation_speechlanguage" value="unknown">&nbsp;Unknown<br><br>
              Please elaborate on the condition, how many family members are affected, and their relationship to the child:<br>
-                <textarea name="family_relations_speechlanguage_elaborate" rows="2" cols="40"></textarea></td>
+                <textarea name="family_relation_speechlanguage_elaborate" rows="2" cols="40"></textarea></td>
       </tr>
       <tr>
         <td> Thyroid problems </td>
@@ -457,7 +457,7 @@
              <input type="checkbox" name ="family_relation_thyroid" value="paternal">&nbsp;Relative on father's side&nbsp;&nbsp;
              <input type="checkbox" name ="family_relation_thyroid" value="unknown">&nbsp;Unknown<br><br>
              Please elaborate on the condition, how many family members are affected, and their relationship to the child:<br>
-                <textarea name="family_relations_thyroid_elaborate" rows="2" cols="40"></textarea></td>
+                <textarea name="family_relation_thyroid_elaborate" rows="2" cols="40"></textarea></td>
       </tr>
       <tr>
         <td> Tics/Tourette's syndrome </td>
@@ -472,7 +472,7 @@
              <input type="checkbox" name ="family_relation_tics" value="paternal">&nbsp;Relative on father's side&nbsp;&nbsp;
              <input type="checkbox" name ="family_relation_tics" value="unknown">&nbsp;Unknown<br><br>
              Please elaborate on the condition, how many family members are affected, and their relationship to the child:<br>
-                <textarea name="family_relations_tics_elaborate" rows="2" cols="40"></textarea></td>
+                <textarea name="family_relation_tics_elaborate" rows="2" cols="40"></textarea></td>
       </tr>
       <tr>
         <td> Trouble with the law </td>
@@ -487,7 +487,7 @@
              <input type="checkbox" name ="family_relation_lawtrouble" value="paternal">&nbsp;Relative on father's side&nbsp;&nbsp;
              <input type="checkbox" name ="family_relation_lawtrouble" value="unknown">&nbsp;Unknown<br><br>
              Please elaborate on the condition, how many family members are affected, and their relationship to the child:<br>
-                <textarea name="family_relations_lawtrouble_elaborate" rows="2" cols="40"></textarea></td>
+                <textarea name="family_relation_lawtrouble_elaborate" rows="2" cols="40"></textarea></td>
       </tr>
       <tr>
         <td> Writing problems/dysgraphia </td>
@@ -502,7 +502,7 @@
              <input type="checkbox" name ="family_relation_dysgraphia" value="paternal">&nbsp;Relative on father's side&nbsp;&nbsp;
              <input type="checkbox" name ="family_relation_dysgraphia" value="unknown">&nbsp;Unknown<br><br>
              Please elaborate on the condition, how many family members are affected, and their relationship to the child:<br>
-                <textarea name="family_relations_dysgraphia_elaborate" rows="2" cols="40"></textarea></td>
+                <textarea name="family_relation_dysgraphia_elaborate" rows="2" cols="40"></textarea></td>
       </tr>
     </tbody>
   </table>

@@ -25,14 +25,11 @@ const isLoggedIn = authRouter.isLoggedIn
 const loggingRouter = require('./routes/logging');
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
-const toDoRouter = require('./routes/todo');
-const toDoAjaxRouter = require('./routes/todoAjax');
+
+//My routers
 const profileRouter = require('./routes/profile');
 const patientsRouter = require('./routes/patients');
-
 const wiscvRouter = require('./routes/WISC_V');
-const tempRouter = require('./routes/temp');
-
 
 const app = express();
 
@@ -53,14 +50,11 @@ app.use(authRouter)
 app.use(loggingRouter);
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
+
+//My additions
 app.use('/profile', profileRouter);
 app.use('/patients', patientsRouter);
-
-app.use('/todo',toDoRouter);
-app.use('/todoAjax',toDoAjaxRouter);
-
 app.use('/WISC_V',wiscvRouter);
-app.use('/temp',tempRouter);
 
 const myLogger = (req,res,next) => {
   console.log('inside a route!')
@@ -89,25 +83,25 @@ app.get('/WJ_IV_ACHform',
       res.render('formWJIVACH')
 })
 
-app.get('/editProfile',
-    isLoggedIn,
-    (req,res) => res.render('editProfile'))
-
-app.post('/editProfile',
-    isLoggedIn,
-    async (req,res,next) => {
-      try {
-        let username = req.body.username
-        let age = req.body.age
-        req.user.username = username
-        req.user.age = age
-        req.user.imageURL = req.body.imageURL
-        await req.user.save()
-        res.redirect('/profile')
-      } catch (error) {
-        next(error)
-      }
-    })
+// app.get('/editProfile',
+//     isLoggedIn,
+//     (req,res) => res.render('editProfile'))
+//
+// app.post('/editProfile',
+//     isLoggedIn,
+//     async (req,res,next) => {
+//       try {
+//         let username = req.body.username
+//         let age = req.body.age
+//         req.user.username = username
+//         req.user.age = age
+//         req.user.imageURL = req.body.imageURL
+//         await req.user.save()
+//         res.redirect('/profile')
+//       } catch (error) {
+//         next(error)
+//       }
+//     })
 
 
 app.use('/data',(req,res) => {

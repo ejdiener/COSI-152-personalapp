@@ -14,16 +14,16 @@
 
   <h3> Pregnancy History </h3>
   <div class="row">
-    <div class="col"> How many times has the mother been pregnant? </div>
-    <div class="col"> <input type="number" name ="mother_total_pregnancies"></div>
+    <div class="col"> How many times has the mother been pregnant? (enter 0 if unknown) </div>
+    <div class="col"> <input required type="number" name ="mother_total_pregnancies"></div>
   </div>
   <div class="row">
-    <div class="col"> How many children does the birth mother have? </div>
-    <div class="col"> <input type="number" name ="mother_total_children"></div>
+    <div class="col"> How many children does the birth mother have? (enter 0 if unknown) </div>
+    <div class="col"> <input required type="number" name ="mother_total_children"></div>
   </div>
   <div class="row">
-    <div class="col"> How many of those children are older than this child? </div>
-    <div class="col"> <input type="number" name ="mother_older_children"></div>
+    <div class="col"> How many of those children are older than this child? (enter 0 if unknown) </div>
+    <div class="col"> <input required type="number" name ="mother_older_children"></div>
   </div><br>
   Did the birth mother...
   <table class="table table-bordered table-striped">
@@ -33,14 +33,14 @@
           <td> <input type="radio" name ="had_miscarriage" value="TRUE">&nbsp;YES&nbsp;&nbsp;
                <input type="radio" name ="had_miscarriage" value="FALSE">&nbsp;NO&nbsp;&nbsp;
                <input type="radio" name ="had_miscarriage" value="UNKNOWN">&nbsp;UNKNOWN<br><br>
-               If yes, how many?&nbsp;<input type="number" name ="miscarriages_total"></td>
+               If yes, how many?&nbsp;<input type="text" name ="miscarriages_total"></td>
       </tr>
       <tr>
           <td> ...terminate any past pregnancies specifically due to a health problem/genetic condition of the baby? </td>
           <td> <input type="radio" name ="had_termination_anomalies" value="TRUE">&nbsp;YES&nbsp;&nbsp;
                <input type="radio" name ="had_termination_anomalies" value="FALSE">&nbsp;NO&nbsp;&nbsp;
                <input type="radio" name ="had_termination_anomalies" value="UNKNOWN">&nbsp;UNKNOWN<br><br>
-               If yes, how many?&nbsp;<input type="number" name="termination_anomalies_total"><br>
+               If yes, how many?&nbsp;<input type="text" name="termination_anomalies_total"><br>
                For what conditions?&nbsp;<input type="text" name="termination_anomalies_cause"></td>
       </tr>
       <tr>
@@ -112,8 +112,8 @@
           <td> <input type="radio" name ="used_cigarettes_pregnancy" value="TRUE">&nbsp;YES&nbsp;&nbsp;
                <input type="radio" name ="used_cigarettes_pregnancy" value="FALSE">&nbsp;NO&nbsp;&nbsp;
                <input type="radio" name ="used_cigarettes_pregnancy" value="UNKNOWN">&nbsp;UNKNOWN<br><br>
-               If yes, how many per day?<br>
-                  <input type="number" name="cigarettes_per_day_pregnancy">&nbsp;
+               If yes, how many per day? (enter as a number)<br>
+                  <input type="String" name="cigarettes_per_day_pregnancy">&nbsp;
                   <input type="radio" name ="cigarettes_per_day_pregnancy_unit" value="loose"> loose&nbsp;
                   <input type="radio" name ="cigarettes_per_day_pregnancy_unit" value="packs"> packs<br><br>
                During which trimester(s)?<br>
@@ -165,11 +165,11 @@
   <h3> Birth History </h3>
   <div class="row">
     <div class="col"> What was the age of the birth mother when this child was born? </div>
-    <div class="col"> <input type="number" name ="mother_age_birth"></div>
+    <div class="col"> <input type="text" name ="mother_age_birth"></div>
   </div>
   <div class="row">
     <div class="col"> What was the age of the birth father when this child was born? </div>
-    <div class="col"> <input type="number" name ="father_age_birth"></div>
+    <div class="col"> <input type="text" name ="father_age_birth"></div>
   </div>
   <div class="row">
     <div class="col"> What was the gestational age of the child when born (i.e. how many weeks)? </div>

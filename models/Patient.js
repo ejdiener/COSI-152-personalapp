@@ -18,7 +18,7 @@ var PatientSchema = Schema( {
 //  DevelopmentHistory: ObjectId,               // SCHEMA: Stores results of DevelopmentHistory form
 //  HealthHistory: ObjectId,                    // SCHEMA: Stores results of HeathHistory form
 //  SocialHistory: ObjectId,                    // SCHEMA: Stores results of SocialHistory form
-  familyMedHistory: ObjectId,                 // SCHEMA: Stores results of FamilyMedHistory form
+  familyMedicalHistory: ObjectId,                 // SCHEMA: Stores results of FamilyMedHistory form
 //  EducationHistory: ObjectId,                 // SCHEMA: Stores results of EducationHistory form
 //  ProvidersHistory: ObjectId,                 // SCHEMA: Stores results of ProvidersHistory form
 

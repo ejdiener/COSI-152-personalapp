@@ -3,7 +3,6 @@ const mongoose = require( 'mongoose' );
 const Schema = mongoose.Schema;
 const ObjectId = mongoose.Schema.Types.ObjectId;
 
-
 var PregBirthSchema = Schema( {
     patientId: ObjectId,
     adoptionStatus: String,                    // TRUE, FALSE
@@ -13,9 +12,9 @@ var PregBirthSchema = Schema( {
     motherOlderChildren: Number,
     birthOrder: Number,
     hadMiscarriage: String,                    // TRUE, FALSE, UNKNOWN
-    miscarriagesTotal: Number,
+    miscarriagesTotal: String,
     hadTerminationAnomalies: String,           // TRUE, FALSE, UNKNOWN
-    terminationAnomaliesTotal: Number,
+    terminationAnomaliesTotal: String,
     terminationAnomaliesCause: String,
     requiredFertilityTreatment: String,        // TRUE, FALSE, UNKNOWN
     fertilityTreatment: String,
@@ -34,7 +33,7 @@ var PregBirthSchema = Schema( {
     usedPrescriptionPregnancy: String,         // TRUE, FALSE, UNKNOWN
     prescriptionPregnancy: String,
     usedCigarettesPregnancy: String,           // TRUE, FALSE, UNKNOWN
-    cigarettesPerDayPregnancy: Number,
+    cigarettesPerDayPregnancy: String,
     cigarettesPerDayPregnancyUnit: String,   // loose, packs
     whenCigarettesPregnancy: [{type:String}],           // 1, 2, 3, UNKNOWN
     usedAlcoholPregnancy: String,              // TRUE, FALSE, UNKNOWN
@@ -46,8 +45,8 @@ var PregBirthSchema = Schema( {
     otherComplicationsPregnancy: String,
     motherAgeBirth: Number,
     fatherAgeBirth: Number,
-    gestationalAge: Number,
-    birthWeight: Number,
+    gestationalAge: String,
+    birthWeight: String,
     pregnancyNumbers: String,                   // singleton, twin, triplet, other
     deliveryMethod: String,                     // vaginal, scheduled_caesarean, unplanned_caesarean, vaginal_after_caesarean, scheduled_induction, forcep_vaginal, vacuum_vaginal, UNKNOWN
     otherComplicationsDelivery: String,
